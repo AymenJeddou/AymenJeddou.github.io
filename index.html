@@ -3,588 +3,170 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aymen Jeddou — RAG &amp; Data Engineering</title>
-<meta name="description" content="Aymen Jeddou — software & data engineering student building retrieval-augmented generation systems and the data pipelines behind them. Bizerte, Tunisia.">
-<meta property="og:title" content="Aymen Jeddou — RAG & Data Engineering">
-<meta property="og:description" content="I build retrieval systems that can prove they work, and the data pipelines that feed them.">
+<title>Aymen Jeddou · Data &amp; AI engineering</title>
+<meta name="description" content="Aymen Jeddou, software and data engineering student in Bizerte, Tunisia. I build data pipelines and AI systems, and measure whether they work.">
+<meta property="og:title" content="Aymen Jeddou · Data & AI engineering">
+<meta property="og:description" content="I build data pipelines and AI systems, and measure whether they work.">
 <meta property="og:image" content="https://aymenjeddou.github.io/assets/aymen.jpg">
 <meta property="og:url" content="https://aymenjeddou.github.io/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://aymenjeddou.github.io/">
-<meta name="theme-color" content="#11110f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2311110f'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-style='italic' font-size='18' fill='%23ff6b2c' text-anchor='middle'%3Eaj%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141414'/%3E%3Ctext x='16' y='21' font-family='system-ui,sans-serif' font-size='14' font-weight='600' fill='%23fff' text-anchor='middle'%3EAJ%3C/text%3E%3C/svg%3E">
 <style>
 :root {
-  --ink: #11110f;
-  --ink-2: #191916;
-  --line: #2a2925;
-  --paper: #ece7dc;
-  --muted: #9a9486;
-  --dim: #6b665b;
-  --accent: #ff6b2c;
-  --accent-soft: rgba(255, 107, 44, .14);
-  --serif: "Instrument Serif", Georgia, serif;
-  --sans: "IBM Plex Sans", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, monospace;
-  --w: 1180px;
+  --bg: #fbfbf9; --fg: #161616; --muted: #66645f; --line: #e6e4df; --accent: #b4441b;
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #121212; --fg: #ecebe8; --muted: #a09d96; --line: #2a2927; --accent: #f0875c; }
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--ink); color: var(--paper); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-::selection { background: var(--accent); color: var(--ink); }
-a { color: inherit; }
-img { max-width: 100%; height: auto; display: block; }
-.wrap { max-width: var(--w); margin: 0 auto; padding: 0 28px; }
-.mono { font-family: var(--mono); font-size: .8rem; letter-spacing: .02em; }
-.label { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
-.accent { color: var(--accent); }
-em, .serif { font-family: var(--serif); font-style: italic; font-weight: 400; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.65 var(--font); -webkit-font-smoothing: antialiased; }
+main { max-width: 720px; margin: 0 auto; padding: 72px 24px 48px; }
+a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px; }
+a:hover { color: var(--accent); text-decoration-color: currentColor; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 64px 0 20px; }
+h3 { font-size: 1.05rem; margin: 0; }
+p { margin: 0 0 14px; }
+ul { margin: 0; padding-left: 1.1em; }
+li { margin-bottom: 6px; }
+.muted { color: var(--muted); }
+.small { font-size: .9rem; }
+.mono { font-family: var(--mono); font-size: .85em; }
 
-/* grain */
-body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: .05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+header { display: flex; gap: 24px; align-items: center; }
+header img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex: none; }
+.intro { margin-top: 28px; font-size: 1.1rem; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-size: .95rem; }
+.status { display: inline-block; margin-top: 18px; font-size: .9rem; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; }
 
-/* nav */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
-nav.scrolled { background: rgba(17, 17, 15, .82); backdrop-filter: blur(10px); border-color: var(--line); }
-nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.brand { font-family: var(--mono); font-size: .85rem; text-decoration: none; }
-.brand b { color: var(--accent); font-weight: 500; }
-nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
-nav ul a { font-family: var(--mono); font-size: .78rem; text-decoration: none; color: var(--muted); transition: color .2s; }
-nav ul a:hover { color: var(--paper); }
-nav ul a span { color: var(--dim); margin-right: 4px; }
-.status { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: .75rem; color: var(--muted); }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: #7bd88f; box-shadow: 0 0 0 0 rgba(123, 216, 143, .6); animation: pulse 2.4s infinite; }
-@keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(123, 216, 143, 0); } 100% { box-shadow: 0 0 0 0 rgba(123, 216, 143, 0); } }
+.item { padding: 18px 0; border-top: 1px solid var(--line); }
+h2 + .item { border-top: 0; padding-top: 0; }
+.row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+.when { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+.item p { margin: 6px 0 0; }
+.item ul { margin-top: 8px; }
+.stack { color: var(--muted); font-size: .88rem; margin-top: 6px; }
+.figures { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 10px; font-size: .92rem; }
+.figures b { font-weight: 600; }
 
-/* hero */
-.hero { position: relative; min-height: min(100vh, 960px); display: flex; align-items: center; padding: 110px 0 60px; }
-#field { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero .wrap { position: relative; display: grid; grid-template-columns: 1.35fr .9fr; gap: 64px; align-items: center; pointer-events: none; }
-.hero .wrap > * { pointer-events: auto; }
-.hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(3.4rem, 8.4vw, 7.2rem); line-height: .92; letter-spacing: -.02em; margin: 18px 0 26px; }
-.hero h1 .line { display: block; overflow: hidden; padding: 0 .06em .14em 0; margin-bottom: -.14em; }
-.hero h1 .line > span { display: inline-block; transform: translateY(105%); animation: rise 1s cubic-bezier(.2, .7, .1, 1) forwards; }
-.hero h1 .line:nth-child(2) > span { animation-delay: .12s; }
-@keyframes rise { to { transform: none; } }
-.lede { font-size: 1.2rem; max-width: 34ch; color: #d6d0c3; margin: 0 0 34px; }
-.lede em { color: var(--paper); font-size: 1.3em; }
-.cta { display: flex; gap: 14px; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; font-family: var(--mono); font-size: .8rem; text-decoration: none; border: 1px solid var(--line); border-radius: 2px; transition: background .2s, color .2s, border-color .2s; }
-.btn:hover { border-color: var(--paper); }
-.btn.primary { background: var(--accent); color: var(--ink); border-color: var(--accent); }
-.btn.primary:hover { background: var(--paper); border-color: var(--paper); }
-.btn svg { width: 14px; height: 14px; }
-.hint { position: absolute; bottom: 26px; left: 28px; }
-
-.portrait { position: relative; }
-.portrait figure { margin: 0; position: relative; border: 1px solid var(--line); padding: 10px; background: var(--ink-2); transform: rotate(1.2deg); transition: transform .5s; }
-.portrait figure:hover { transform: rotate(0); }
-.portrait img { filter: grayscale(.25) contrast(1.02); aspect-ratio: 1; object-fit: cover; }
-.portrait figcaption { display: flex; justify-content: space-between; padding: 10px 2px 2px; }
-.tape { position: absolute; top: -12px; left: 50%; width: 110px; height: 26px; transform: translateX(-50%) rotate(-3deg); background: rgba(236, 231, 220, .12); border: 1px dashed rgba(236, 231, 220, .15); }
-
-/* trace */
-.trace { margin-top: 26px; border: 1px solid var(--line); background: rgba(25, 25, 22, .85); font-family: var(--mono); font-size: .74rem; line-height: 1.75; min-height: 214px; }
-.trace header { display: flex; justify-content: space-between; padding: 8px 14px; border-bottom: 1px solid var(--line); color: var(--dim); }
-.trace pre { margin: 0; padding: 12px 14px; white-space: pre-wrap; color: var(--muted); font: inherit; }
-.trace .k { color: var(--paper); }
-.trace .a { color: var(--accent); }
-.trace .g { color: #7bd88f; }
-.caret { display: inline-block; width: 7px; height: 1em; background: var(--accent); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-
-/* sections */
-section { padding: 120px 0; border-top: 1px solid var(--line); }
-.head { display: grid; grid-template-columns: 220px 1fr; gap: 40px; margin-bottom: 64px; }
-.head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1; margin: 0; letter-spacing: -.01em; }
-.head p { color: var(--muted); max-width: 56ch; margin: 18px 0 0; }
-
-/* metrics */
-.metrics { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); }
-.metric { padding: 32px 26px; border-right: 1px solid var(--line); }
-.metric:last-child { border-right: 0; }
-.metric .v { font-family: var(--serif); font-size: clamp(2.6rem, 4.6vw, 3.6rem); line-height: 1; }
-.metric .v small { font-family: var(--mono); font-size: .8rem; color: var(--dim); margin-right: 8px; text-decoration: line-through; }
-.metric p { margin: 12px 0 0; font-size: .9rem; color: var(--muted); }
-.bar { height: 2px; background: var(--line); margin-top: 18px; position: relative; }
-.bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--accent); transition: width 1.6s cubic-bezier(.2, .7, .1, 1); }
-.bar b { position: absolute; top: -3px; width: 1px; height: 8px; background: var(--dim); }
-
-/* experience */
-.job { display: grid; grid-template-columns: 220px 1fr; gap: 40px; padding: 40px 0; border-top: 1px dashed var(--line); }
-.job:first-of-type { border-top: 0; padding-top: 0; }
-.job > div { min-width: 0; }
-.job h3 { font-size: 1.35rem; font-weight: 500; margin: 0 0 4px; }
-.job .org { color: var(--accent); font-family: var(--mono); font-size: .85rem; }
-.job .ctx { color: var(--muted); font-style: italic; margin: 10px 0 18px; }
-.job ul { margin: 0; padding: 0; list-style: none; }
-.job li { position: relative; padding-left: 26px; margin-bottom: 12px; color: #d6d0c3; }
-.job li::before { content: "→"; position: absolute; left: 0; color: var(--dim); font-family: var(--mono); }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
-.tag { font-family: var(--mono); font-size: .7rem; padding: 3px 8px; border: 1px solid var(--line); color: var(--muted); border-radius: 2px; }
-
-/* pipeline diagram */
-.pipe { margin: 8px 0 26px; border: 1px solid var(--line); background: var(--ink-2); padding: 18px; overflow-x: auto; }
-.pipe svg { display: block; min-width: 640px; width: 100%; height: auto; }
-.pipe text { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
-.pipe .n rect { fill: var(--ink); stroke: var(--line); }
-.pipe .n.hl rect { stroke: var(--accent); }
-.pipe .n.hl text { fill: var(--paper); }
-.pipe path { fill: none; stroke: #3b3934; stroke-width: 1.2; }
-.pipe .flow { stroke: var(--accent); stroke-dasharray: 4 10; animation: flow 1.2s linear infinite; }
-@keyframes flow { to { stroke-dashoffset: -28; } }
-
-/* projects */
-.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 30px; }
-.filters button { background: none; border: 1px solid var(--line); color: var(--muted); font-family: var(--mono); font-size: .75rem; padding: 8px 14px; cursor: pointer; border-radius: 2px; transition: all .2s; }
-.filters button:hover { color: var(--paper); }
-.filters button[aria-pressed="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-.projects { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; padding: 1px; }
-.p { grid-column: span 4; outline: 1px solid var(--line); background: var(--ink); padding: 30px 26px 26px; display: flex; flex-direction: column; position: relative; transition: background .3s; text-decoration: none; }
-.p.wide { grid-column: span 6; }
-.p:hover { background: var(--ink-2); }
-.p.hide { display: none; }
-.p .top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 26px; }
-.p h3 { font-family: var(--serif); font-weight: 400; font-size: 1.9rem; line-height: 1.05; margin: 0 0 12px; }
-.p p { color: var(--muted); font-size: .93rem; margin: 0 0 18px; flex: 1; }
-.p .go { position: absolute; top: 28px; right: 24px; color: var(--dim); transition: transform .3s, color .3s; }
-.p:hover .go { color: var(--accent); transform: translate(3px, -3px); }
-.p .role { font-family: var(--mono); font-size: .72rem; color: var(--accent); }
-.p .top .label { padding-right: 24px; }
-
-/* direction */
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-.big { font-family: var(--serif); font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1.2; margin: 0; }
-.big em { color: var(--accent); }
-.stack { display: grid; grid-template-columns: 1fr; }
-.stack div { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-.stack div:first-child { border-top: 1px solid var(--line); }
-.stack dt { font-family: var(--mono); font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; padding-top: 3px; }
-.stack dd { margin: 0; }
-
-/* education */
-.edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.edu > div { background: var(--ink); padding: 28px 24px; }
-.edu h3 { font-size: 1.05rem; font-weight: 500; margin: 10px 0 6px; }
-.edu p { color: var(--muted); margin: 0; font-size: .92rem; }
-
-/* contact */
-.contact { padding: 140px 0 60px; }
-.contact h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(3.4rem, 10vw, 8.5rem); line-height: .9; margin: 0 0 40px; letter-spacing: -.02em; }
-.contact h2 a { text-decoration: none; background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 3px no-repeat; transition: background-size .5s; }
-.contact h2 a:hover { background-size: 100% 3px; }
-.links { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
-.links a { padding: 22px 0; text-decoration: none; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; margin-right: 24px; font-family: var(--mono); font-size: .82rem; color: var(--muted); transition: color .2s; }
-.links a:hover { color: var(--accent); }
-footer { padding: 30px 0 40px; color: var(--dim); }
-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-
-/* reveal */
-.r { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.2, .7, .1, 1), transform .9s cubic-bezier(.2, .7, .1, 1); }
-.r.in { opacity: 1; transform: none; }
-
-@media (max-width: 960px) {
-  nav ul { display: none; }
-  .hero .wrap { grid-template-columns: 1fr; gap: 50px; }
-  .portrait { max-width: 420px; }
-  .head, .job { grid-template-columns: 1fr; gap: 14px; }
-  .metrics { grid-template-columns: 1fr 1fr; }
-  .metric:nth-child(2) { border-right: 0; }
-  .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-  .p, .p.wide { grid-column: span 6; }
-  .split { grid-template-columns: 1fr; gap: 40px; }
-  .edu { grid-template-columns: 1fr; }
-  .links { grid-template-columns: 1fr 1fr; }
-  .hint { display: none; }
-}
-@media (max-width: 600px) {
-  .wrap { padding: 0 16px; }
-  section { padding: 84px 0; }
-  .metrics { grid-template-columns: 1fr; }
-  .metric { border-right: 0; border-bottom: 1px solid var(--line); }
-  .metric:last-child { border-bottom: 0; }
-  .p, .p.wide { grid-column: span 12; }
-  .stack div { grid-template-columns: 1fr; gap: 6px; }
-  .links { grid-template-columns: 1fr; }
-  .links a { margin-right: 0; }
-  .status span { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  .hero h1 .line > span { transform: none; }
-  .r { opacity: 1; transform: none; }
+footer { margin-top: 72px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+@media (max-width: 560px) {
+  main { padding-top: 48px; }
+  header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  h1 { font-size: 1.6rem; }
 }
 </style>
 </head>
 <body>
+<main>
 
-<nav id="nav">
-  <div class="wrap">
-    <a class="brand" href="#top">aymen<b>.</b>jeddou</a>
-    <ul>
-      <li><a href="#work"><span>01</span>work</a></li>
-      <li><a href="#projects"><span>02</span>projects</a></li>
-      <li><a href="#direction"><span>03</span>stack</a></li>
-      <li><a href="#contact"><span>04</span>contact</a></li>
-    </ul>
-    <div class="status"><i class="dot"></i><span>open to PFE internships · 2027</span></div>
+<header>
+  <img src="assets/aymen.jpg" alt="Aymen Jeddou" width="84" height="84">
+  <div>
+    <h1>Aymen Jeddou</h1>
+    <div class="muted">Software &amp; Data Engineering student · Bizerte, Tunisia</div>
   </div>
-</nav>
-
-<header class="hero" id="top">
-  <canvas id="field" aria-hidden="true"></canvas>
-  <div class="wrap">
-    <div>
-      <div class="label">Software &amp; Data Engineering · FSB, Tunisia</div>
-      <h1><span class="line"><span>Aymen</span></span><span class="line"><span><em>Jeddou</em></span></span></h1>
-      <p class="lede">I build retrieval systems that can <em>prove</em> they work &mdash; and the data pipelines that feed them.</p>
-      <div class="cta">
-        <a class="btn primary" href="#work">See the work
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8l5 5 5-5"/></svg></a>
-        <a class="btn" href="assets/Aymen_Jeddou_CV_EN.pdf" target="_blank" rel="noopener">CV · EN</a>
-        <a class="btn" href="assets/Aymen_Jeddou_CV_FR.pdf" target="_blank" rel="noopener">CV · FR</a>
-      </div>
-    </div>
-    <div class="portrait">
-      <figure>
-        <span class="tape"></span>
-        <img src="assets/aymen.jpg" alt="Portrait of Aymen Jeddou" width="640" height="640">
-        <figcaption class="mono"><span>Bizerte, TN</span><span class="accent">37.27°N 9.87°E</span></figcaption>
-      </figure>
-      <div class="trace" aria-label="Example RAG query trace">
-        <header><span>fsb-nexus / example trace</span><span id="trace-ms">—</span></header>
-        <pre id="trace"></pre>
-      </div>
-    </div>
-  </div>
-  <div class="hint label">move your cursor &mdash; it retrieves its top-5 neighbours</div>
 </header>
 
-<section id="work">
-  <div class="wrap">
-    <div class="head r">
-      <div class="label">01 — Experience</div>
-      <div>
-        <h2>Measure first,<br><em>then</em> iterate.</h2>
-        <p>My internship work on FSB Nexus came down to one habit: build the benchmark before touching the pipeline. These are the numbers it moved.</p>
-      </div>
-    </div>
+<p class="intro">I build data pipelines and AI systems, and I measure whether they work. Most of the AI bugs I've fixed turned out to be data bugs, so that's where I spend my time.</p>
+<span class="status">Looking for a PFE internship in data or AI, 2027</span>
+<nav class="links">
+  <a href="mailto:aymenjeddou03@gmail.com">aymenjeddou03@gmail.com</a>
+  <a href="https://github.com/AymenJeddou">GitHub</a>
+  <a href="https://www.linkedin.com/in/aymen-jeddou-72891726a/">LinkedIn</a>
+  <a href="assets/Aymen_Jeddou_CV_EN.pdf">CV (EN)</a>
+  <a href="assets/Aymen_Jeddou_CV_FR.pdf">CV (FR)</a>
+</nav>
 
-    <div class="metrics r">
-      <div class="metric"><div class="v"><small>0.50</small><span data-count="0.90" data-dec="2">0.00</span></div><div class="bar"><b style="left:50%"></b><i data-w="90"></i></div><p>hit@5 on the internal retrieval benchmark</p></div>
-      <div class="metric"><div class="v"><small>0.395</small><span data-count="0.776" data-dec="3">0.000</span></div><div class="bar"><b style="left:39.5%"></b><i data-w="77.6"></i></div><p>Mean reciprocal rank after hybrid search + RRF</p></div>
-      <div class="metric"><div class="v"><span data-count="69" data-dec="0">0</span></div><div class="bar"><i data-w="100"></i></div><p>Automated tests gating every merge in CI</p></div>
-      <div class="metric"><div class="v"><span data-count="4" data-dec="0">0</span></div><div class="bar"><i data-w="100"></i></div><p>Specialised agents behind one question box</p></div>
-    </div>
+<h2>Now</h2>
 
-    <div style="height:72px"></div>
+<div class="item">
+  <div class="row"><h3><a href="https://hireshere.app">HiresHere</a></h3><span class="when">Oct 2026 · solo, live</span></div>
+  <p>A remote job site that tells you which jobs you can actually apply for from your country, and quotes the line in the posting that proves it.</p>
+  <ul>
+    <li>Daily pipeline reads the public job feeds of about 540 companies (Greenhouse, Lever, Ashby, SmartRecruiters, Workable, Recruitee, Teamtailor) plus Remote OK and Jobicy.</li>
+    <li>Gemini batch extracts who may apply into a typed Pydantic schema; plain Python rules turn that into a verdict for each of 243 countries, so adding a country costs no AI calls.</li>
+    <li>Static Astro site on Cloudflare Pages, job pages from Pages Functions, D1 for sign-ups, email alerts and a Telegram bot. English, French and Arabic.</li>
+  </ul>
+  <div class="figures"><span><b>11,566</b> jobs listed</span><span><b>597</b> companies</span><span><b>243</b> countries</span><span><b>$1.85</b> to classify 4,563 postings</span></div>
+  <div class="stack">Python · httpx · Pydantic · SQLite · Gemini Batch API · Astro · Cloudflare · GitHub Actions</div>
+</div>
 
-    <article class="job r">
-      <div>
-        <div class="label">Jun — Aug 2026</div>
-        <div class="org" style="margin-top:8px">IDEALAB · Bizerte</div>
-      </div>
-      <div>
-        <h3>RAG Engineer &amp; Scrum Master <span class="label" style="margin-left:6px">intern</span></h3>
-        <p class="ctx">Digital Campus / FSB Nexus — an academic assistant for the Faculty of Sciences of Bizerte.</p>
+<div class="item">
+  <div class="row"><h3>RoadScan</h3><span class="when">2026 · team of 4, private</span></div>
+  <p>A citizen's pothole photo becomes a cited repair work order routed to the right authority. I own the RAG agent that looks up road-type rules and drafts the order.</p>
+  <div class="stack">Chroma · YOLOv8n (ONNX) · FastAPI · PostGIS · Flutter</div>
+</div>
 
-        <div class="pipe" aria-label="Diagram of the FSB Nexus RAG pipeline">
-          <svg viewBox="0 0 760 150">
-            <path d="M92 75 H128"/><path class="flow" d="M92 75 H128"/>
-            <path d="M228 75 C250 75 250 38 272 38"/><path d="M228 75 C250 75 250 112 272 112"/>
-            <path class="flow" d="M228 75 C250 75 250 38 272 38"/><path class="flow" d="M228 75 C250 75 250 112 272 112"/>
-            <path d="M392 38 C414 38 414 75 436 75"/><path d="M392 112 C414 112 414 75 436 75"/>
-            <path class="flow" d="M392 38 C414 38 414 75 436 75"/><path class="flow" d="M392 112 C414 112 414 75 436 75"/>
-            <path d="M536 75 H572"/><path class="flow" d="M536 75 H572"/>
-            <g class="n"><rect x="4" y="57" width="88" height="36" rx="2"/><text x="48" y="79" text-anchor="middle">question</text></g>
-            <g class="n"><rect x="128" y="57" width="100" height="36" rx="2"/><text x="178" y="79" text-anchor="middle">agent router</text></g>
-            <g class="n hl"><rect x="272" y="20" width="120" height="36" rx="2"/><text x="332" y="42" text-anchor="middle">pgvector · dense</text></g>
-            <g class="n hl"><rect x="272" y="94" width="120" height="36" rx="2"/><text x="332" y="116" text-anchor="middle">tsvector · full-text</text></g>
-            <g class="n hl"><rect x="436" y="57" width="100" height="36" rx="2"/><text x="486" y="79" text-anchor="middle">RRF fusion</text></g>
-            <g class="n"><rect x="572" y="57" width="184" height="36" rx="2"/><text x="664" y="79" text-anchor="middle">Mistral + citations [1][2]</text></g>
-            <text x="178" y="30" text-anchor="middle" fill="#6b665b">orientation · academic</text>
-            <text x="178" y="44" text-anchor="middle" fill="#6b665b">admin · learning</text>
-          </svg>
-        </div>
+<h2>Experience</h2>
 
-        <ul>
-          <li>Designed a multi-agent RAG pipeline — four specialised agents (orientation, academic, administrative, learning) — that routes each question and answers with automatic source citations.</li>
-          <li>Traced weak retrieval to a vector-index misconfiguration, then added hybrid search (vector + full-text, reciprocal rank fusion): hit@5 <b>0.50 → 0.90</b>, MRR <b>0.395 → 0.776</b>.</li>
-          <li>Built the evaluation harness (annotated set + 100-question set) measuring hit@5, MRR, recall@10, answer rate and wrong-answer rate — the team's quality baseline.</li>
-          <li>As Scrum Master, ran the backlog for a team of 4 and integrated every branch into <span class="mono">dev</span>, catching a security flaw in the streaming flow along the way.</li>
-          <li>Shipped to production with GitHub Actions CI (69 tests), Docker and versioned Alembic migrations.</li>
-        </ul>
-        <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL + pgvector</span><span class="tag">sentence-transformers</span><span class="tag">Mistral</span><span class="tag">Alembic</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span></div>
-      </div>
-    </article>
+<div class="item">
+  <div class="row"><h3>RAG Engineer &amp; Scrum Master, IDEALAB</h3><span class="when">Jun to Aug 2026</span></div>
+  <p class="muted small">FSB Nexus, an academic assistant for the Faculty of Sciences of Bizerte.</p>
+  <ul>
+    <li>Built a multi-agent RAG pipeline (orientation, academic, administrative, learning) that answers with source citations.</li>
+    <li>Traced weak retrieval to a vector-index misconfiguration, then added hybrid search (pgvector + full-text, reciprocal rank fusion): hit@5 <b>0.50 → 0.90</b>, MRR <b>0.395 → 0.776</b>.</li>
+    <li>Built the evaluation harness the team used as its quality baseline (hit@5, MRR, recall@10, answer and wrong-answer rates).</li>
+    <li>Ran the backlog for a team of 4, integrated every branch, and shipped with CI (69 tests), Docker and Alembic migrations.</li>
+  </ul>
+</div>
 
-    <article class="job r">
-      <div>
-        <div class="label">Jul — Aug 2025</div>
-        <div class="org" style="margin-top:8px">OAK Visuals</div>
-      </div>
-      <div>
-        <h3>Automation &amp; Data Processing <span class="label" style="margin-left:6px">intern</span></h3>
-        <p class="ctx">Microsoft Dynamics 365 Customer Insights – Journeys, Power Automate, Microsoft Fabric.</p>
-        <ul>
-          <li>Automated multichannel customer journeys (email, SMS, push) and wired their data flows into an analytics tool for centralised reporting.</li>
-          <li>Structured and analysed operational data by theme (AI, cybersecurity, DevOps) with low-code automation, producing summaries used by business teams.</li>
-        </ul>
-        <div class="tags"><span class="tag">Dynamics 365</span><span class="tag">Power Automate</span><span class="tag">Microsoft Fabric</span></div>
-      </div>
-    </article>
-  </div>
-</section>
+<div class="item">
+  <div class="row"><h3>Automation &amp; Data Processing intern, OAK Visuals</h3><span class="when">Jul to Aug 2025</span></div>
+  <p>Automated multichannel customer journeys in Dynamics 365 and wired their data into central reporting with Power Automate and Microsoft Fabric.</p>
+</div>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="head r">
-      <div class="label">02 — Projects</div>
-      <div>
-        <h2>Things I've <em>built</em>.</h2>
-        <p>Retrieval, pipelines, models, and the apps around them. Most were team efforts — the line under each title is what I owned.</p>
-      </div>
-    </div>
+<h2>Selected projects</h2>
 
-    <div class="filters r" role="group" aria-label="Filter projects">
-      <button aria-pressed="true" data-f="all">all</button>
-      <button aria-pressed="false" data-f="ai">ai &amp; rag</button>
-      <button aria-pressed="false" data-f="data">data engineering</button>
-      <button aria-pressed="false" data-f="ml">ml &amp; vision</button>
-      <button aria-pressed="false" data-f="app">apps</button>
-    </div>
+<div class="item">
+  <div class="row"><h3><a href="https://github.com/AymenJeddou/digital_campus_platform">FSB Nexus</a></h3><span class="when">2026</span></div>
+  <p>The multi-agent assistant from my IDEALAB internship: hybrid retrieval over pgvector and Postgres full-text, auth, chat sessions and document ingestion.</p>
+  <div class="stack">FastAPI · pgvector · Mistral · Alembic</div>
+</div>
 
-    <div class="projects">
-      <a class="p wide r" data-c="ai data" href="https://github.com/AymenJeddou/digital_campus_platform" target="_blank" rel="noopener">
-        <div class="top"><span class="label">2026 · RAG platform</span></div><span class="go">↗</span>
-        <h3>FSB Nexus — Digital Campus</h3>
-        <div class="role">rag pipeline · evaluation · integration</div>
-        <p style="margin-top:14px">Multi-agent academic assistant with hybrid retrieval over pgvector and Postgres full-text, fused with RRF. Auth, chat sessions, document ingestion and an 11-table schema behind a FastAPI backend.</p>
-        <div class="tags"><span class="tag">FastAPI</span><span class="tag">pgvector</span><span class="tag">RRF</span><span class="tag">Alembic</span><span class="tag">CI</span></div>
-      </a>
-      <div class="p wide r" data-c="ai ml">
-        <div class="top"><span class="label">2026 · in progress · private</span></div>
-        <h3>RoadScan</h3>
-        <div class="role">owner · rag agent &amp; work sheets</div>
-        <p style="margin-top:14px">Citizen photo → YOLOv8n severity grade → confirmed pothole → a RAG agent that looks up road-type rules, drafts a cited repair work order and routes it to the right authority. Four-person Scrum team, zero budget.</p>
-        <div class="tags"><span class="tag">Chroma</span><span class="tag">YOLOv8n · ONNX</span><span class="tag">FastAPI</span><span class="tag">PostGIS</span><span class="tag">Flutter</span></div>
-      </div>
-      <div class="p r" data-c="data">
-        <div class="top"><span class="label">2025 · ETL · private</span></div>
-        <h3>Mobility &amp; Environment ETL</h3>
-        <div class="role">airflow dag · data quality</div>
-        <p style="margin-top:14px">An Airflow DAG that extracts seven public datasets — crash reports, EV registrations, air traffic, GTFS transit, EPA facilities, car sales — stages and cleans them with pandas, loads PostgreSQL and runs a quality check.</p>
-        <div class="tags"><span class="tag">Apache Airflow</span><span class="tag">pandas</span><span class="tag">PostgreSQL</span><span class="tag">Docker Compose</span></div>
-      </div>
-      <a class="p r" data-c="ai app" href="https://github.com/AymenJeddou/FSBridge" target="_blank" rel="noopener">
-        <div class="top"><span class="label">2026 · web</span></div><span class="go">↗</span>
-        <h3>FSBridge</h3>
-        <div class="role">student portal · ai assistant</div>
-        <p style="margin-top:14px">Student portal with GPA and honours calculation on the Tunisian 20-point scale, timetables, PDF documents, and a Gemini assistant served through Supabase Edge Functions.</p>
-        <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">Gemini</span></div>
-      </a>
-      <a class="p r" data-c="ai app" href="https://github.com/AymenJeddou/AgroScan" target="_blank" rel="noopener">
-        <div class="top"><span class="label">2026 · mobile</span></div><span class="go">↗</span>
-        <h3>AgroScan</h3>
-        <div class="role">vision llm · offline-first</div>
-        <p style="margin-top:14px">Photograph a leaf or an insect, get one of 40 North-African crop pests identified by Gemini 2.5 Flash, with treatment advice. FR / EN / AR, offline history in SQLite.</p>
-        <div class="tags"><span class="tag">Flutter</span><span class="tag">Riverpod</span><span class="tag">Gemini</span><span class="tag">Drift</span></div>
-      </a>
-      <a class="p r" data-c="ml data" href="https://github.com/AymenJeddou/OliveGrove_IOT" target="_blank" rel="noopener">
-        <div class="top"><span class="label">2025 · iot + ml</span></div><span class="go">↗</span>
-        <h3>Smart Olive Grove</h3>
-        <div class="role">sensor stream · prediction</div>
-        <p style="margin-top:14px">Arduino soil, temperature and rain sensors streamed over Web Serial into a live dashboard; a Random Forest classifies tree health (water stress, heat stress, fungal risk).</p>
-        <div class="tags"><span class="tag">Arduino</span><span class="tag">scikit-learn</span><span class="tag">Express</span><span class="tag">MongoDB</span></div>
-      </a>
-      <a class="p r" data-c="ml" href="https://github.com/AbderrahimNeji/FinalProjectDevops" target="_blank" rel="noopener">
-        <div class="top"><span class="label">2025 · computer vision</span></div><span class="go">↗</span>
-        <h3>Road Degradation Detection</h3>
-        <div class="role">detection · geospatial view</div>
-        <p style="margin-top:14px">Real-time road anomaly detection with YOLOv8 and geospatial visualisation of predictions — the prototype that later grew into RoadScan.</p>
-        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">Maps</span></div>
-      </a>
-      <a class="p r" data-c="ml" href="https://github.com/AymenJeddou/insurance-claim-prediction" target="_blank" rel="noopener">
-        <div class="top"><span class="label">2025 · ml</span></div><span class="go">↗</span>
-        <h3>Insurance Prediction</h3>
-        <div class="role">modelling · web ui</div>
-        <p style="margin-top:14px">Predictive model for insurance premium analysis, from notebook exploration to a small web interface for predictions.</p>
-        <div class="tags"><span class="tag">Jupyter</span><span class="tag">scikit-learn</span><span class="tag">JavaScript</span></div>
-      </a>
-      <a class="p wide r" data-c="app" href="https://github.com/AymenJeddou/JobJet" target="_blank" rel="noopener">
-        <div class="top"><span class="label">2025 · full-stack</span></div><span class="go">↗</span>
-        <h3>JobJet</h3>
-        <div class="role">professional network</div>
-        <p style="margin-top:14px">Professional network with job offers, applications, messaging, notifications, company pages and CV export to PDF.</p>
-        <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">OAuth</span></div>
-      </a>
-      <a class="p wide r" data-c="app" href="https://github.com/AymenJeddou/Gestion-Absence-Flutter-App" target="_blank" rel="noopener">
-        <div class="top"><span class="label">2026 · mobile</span></div><span class="go">↗</span>
-        <h3>Attendance Manager</h3>
-        <div class="role">admin · teacher · student roles</div>
-        <p style="margin-top:14px">Attendance tracking app with three role-based spaces, backed by a PHP REST API and MySQL.</p>
-        <div class="tags"><span class="tag">Flutter</span><span class="tag">PHP</span><span class="tag">MySQL</span></div>
-      </a>
-    </div>
-  </div>
-</section>
+<div class="item">
+  <div class="row"><h3>Mobility &amp; Environment ETL</h3><span class="when">2025 · private</span></div>
+  <p>An Airflow DAG over seven public datasets (crashes, EV registrations, air traffic, GTFS transit, EPA facilities, car sales): staged, cleaned, quality-checked and loaded into Postgres.</p>
+  <div class="stack">Airflow · pandas · PostgreSQL · Docker Compose</div>
+</div>
 
-<section id="direction">
-  <div class="wrap">
-    <div class="head r">
-      <div class="label">03 — Direction &amp; stack</div>
-      <div><h2>Where I'm <em>heading</em>.</h2></div>
-    </div>
-    <div class="split">
-      <div class="r">
-        <p class="big">Every RAG bug I've fixed was really a <em>data</em> bug — a bad index, a lost chunk, a missing field. So I'm steering toward data engineering: the ingestion, modelling and quality work that decides whether an AI system can be trusted.</p>
-        <p style="color:var(--muted);margin-top:28px">Currently in the 3rd year of the Software &amp; Data Engineering cycle at the Faculty of Sciences of Bizerte, looking for a PFE internship in data / AI starting 2027.</p>
-      </div>
-      <dl class="stack r">
-        <div><dt>AI &amp; ML</dt><dd>RAG, LLMs (Mistral, Gemini), sentence-transformers, LangChain, scikit-learn, TensorFlow, OpenCV, YOLOv8</dd></div>
-        <div><dt>Data</dt><dd>PostgreSQL + pgvector, hybrid search, Apache Airflow, pandas, NumPy, MongoDB, Supabase</dd></div>
-        <div><dt>Backend</dt><dd>FastAPI, Node.js, Express, React, JWT</dd></div>
-        <div><dt>Ops</dt><dd>Docker, GitHub Actions, Alembic, Linux, Git, Postman</dd></div>
-        <div><dt>Automation</dt><dd>n8n, Zapier, Power Automate, Dynamics 365</dd></div>
-        <div><dt>Languages</dt><dd>Python, SQL, JavaScript / TypeScript, Java, Dart</dd></div>
-      </dl>
-    </div>
+<div class="item">
+  <div class="row"><h3><a href="https://github.com/AymenJeddou/FSBridge">FSBridge</a></h3><span class="when">2026</span></div>
+  <p>Student portal with GPA and honours on the Tunisian 20-point scale, timetables, PDF documents and a Gemini assistant.</p>
+  <div class="stack">React · TypeScript · Supabase</div>
+</div>
 
-    <div style="height:90px"></div>
-    <div class="edu r">
-      <div><div class="label">2024 — 2027 · FSB</div><h3>Engineering degree, Software &amp; Data Engineering</h3><p>Currently 3rd year.</p></div>
-      <div><div class="label">2022 — 2024 · FSB</div><h3>Integrated preparatory cycle</h3><p>Mathematics, physics, computer science. Baccalaureate 2022, with honours.</p></div>
-      <div><div class="label">Certs &amp; languages</div><h3>DataCamp — AI Fundamentals, Data Analyst Associate</h3><p>Arabic (native) · French (bilingual) · English (C1)</p></div>
-    </div>
-  </div>
-</section>
+<div class="item">
+  <div class="row"><h3><a href="https://github.com/AymenJeddou/AgroScan">AgroScan</a></h3><span class="when">2026</span></div>
+  <p>Photograph a leaf or an insect and get one of 40 North African crop pests identified, with treatment advice in French, English or Arabic, and a scan history kept offline.</p>
+  <div class="stack">Flutter · Gemini · SQLite</div>
+</div>
 
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="label r">04 — Contact</div>
-    <h2 class="r">Let's build<br>something <a href="mailto:aymenjeddou03@gmail.com"><em>together</em>.</a></h2>
-    <div class="links r">
-      <a href="mailto:aymenjeddou03@gmail.com">aymenjeddou03@gmail.com <span>↗</span></a>
-      <a href="https://www.linkedin.com/in/aymen-jeddou-72891726a/" target="_blank" rel="noopener">linkedin <span>↗</span></a>
-      <a href="https://github.com/AymenJeddou" target="_blank" rel="noopener">github <span>↗</span></a>
-      <a href="assets/Aymen_Jeddou_CV_EN.pdf" target="_blank" rel="noopener">résumé (pdf) <span>↓</span></a>
-    </div>
-  </div>
-</section>
+<h2>Open source</h2>
+<ul>
+  <li><a href="https://github.com/remoteintech/remote-jobs/pull/2270">remoteintech/remote-jobs #2270</a>: updated 9 company careers links that had moved, and reported 9 profiles whose domains no longer exist (<a href="https://github.com/remoteintech/remote-jobs/issues/2271">#2271</a>).</li>
+  <li><a href="https://github.com/kalil0321/ats-scrapers/issues/299">kalil0321/ats-scrapers #299</a>: found 82 dead company entries while sampling 2,800 boards.</li>
+  <li><a href="https://github.com/pydantic/pydantic-ai/issues/1771">pydantic/pydantic-ai #1771</a>: Gemini Batch API requirements for batch support, from running it in production.</li>
+</ul>
 
-<footer class="mono">
-  <div class="wrap"><span>© 2026 Aymen Jeddou</span><span>hand-built, no framework · Bizerte</span></div>
-</footer>
+<h2>Skills</h2>
+<p><b>Data:</b> SQL, PostgreSQL + pgvector, Airflow, pandas, SQLite, MongoDB, Supabase<br>
+<b>AI:</b> RAG, hybrid search, evaluation, Gemini, Mistral, sentence-transformers, scikit-learn, YOLOv8<br>
+<b>Engineering:</b> Python, TypeScript, FastAPI, Astro, React, Flutter, Docker, GitHub Actions, Cloudflare</p>
 
-<script>
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+<h2>Education</h2>
+<div class="item">
+  <div class="row"><h3>Engineering degree, Software &amp; Data Engineering</h3><span class="when">2024 to 2027</span></div>
+  <p class="muted">Faculty of Sciences of Bizerte (FSB), 3rd year. Preparatory cycle at FSB, 2022 to 2024.</p>
+</div>
+<p class="muted small">DataCamp: AI Fundamentals, Data Analyst Associate · Arabic (native), French (bilingual), English (C1)</p>
 
-// nav background on scroll
-const nav = document.getElementById('nav');
-addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), { passive: true });
-
-// reveal + count-up + bars
-const io = new IntersectionObserver(entries => {
-  for (const e of entries) {
-    if (!e.isIntersecting) continue;
-    e.target.classList.add('in');
-    e.target.querySelectorAll('[data-count]').forEach(countUp);
-    e.target.querySelectorAll('[data-w]').forEach(b => b.style.width = b.dataset.w + '%');
-    io.unobserve(e.target);
-  }
-}, { threshold: .15 });
-document.querySelectorAll('.r').forEach(el => io.observe(el));
-
-function countUp(el) {
-  const to = +el.dataset.count, dec = +el.dataset.dec, t0 = performance.now(), dur = reduced ? 0 : 1600;
-  (function tick(t) {
-    const k = dur ? Math.min((t - t0) / dur, 1) : 1;
-    el.textContent = (to * (1 - Math.pow(1 - k, 3))).toFixed(dec);
-    if (k < 1) requestAnimationFrame(tick);
-  })(t0);
-}
-
-// project filters
-const buttons = document.querySelectorAll('.filters button');
-buttons.forEach(b => b.onclick = () => {
-  buttons.forEach(x => x.setAttribute('aria-pressed', x === b));
-  document.querySelectorAll('.p').forEach(p =>
-    p.classList.toggle('hide', b.dataset.f !== 'all' && !p.dataset.c.split(' ').includes(b.dataset.f)));
-});
-
-// RAG trace, typed line by line
-const traces = [
-  ['when does the S1 exam period start?', 'academic', 0.91, 'answer drawn from the academic calendar [1]'],
-  ['how do I get a certificate of enrolment?', 'administrative', 0.88, 'answer drawn from registrar procedures [1][2]'],
-  ['which master fits a data engineering goal?', 'orientation', 0.84, 'answer drawn from programme descriptions [1][3]'],
-];
-const pre = document.getElementById('trace'), ms = document.getElementById('trace-ms');
-let ti = 0;
-function runTrace() {
-  const [q, agent, score, ans] = traces[ti++ % traces.length];
-  const lines = [
-    `<span class="k">&gt; ${q}</span>`,
-    `route     → <span class="a">agent:${agent}</span>`,
-    `retrieve  dense k=20 · full-text k=20`,
-    `fuse      rrf(k=60) → top-5  <span class="g">score ${score}</span>`,
-    `generate  mistral · 2 citations`,
-    `<span class="k">← ${ans}</span>`,
-  ];
-  if (reduced) { pre.innerHTML = lines.join('\n'); ms.textContent = '412 ms'; return; }
-  let i = 0; pre.innerHTML = ''; ms.textContent = 'running…';
-  (function next() {
-    if (i < lines.length) { pre.innerHTML = lines.slice(0, ++i).join('\n') + ' <span class="caret"></span>'; setTimeout(next, i === 1 ? 700 : 380); }
-    else { ms.textContent = (300 + Math.round(Math.random() * 250)) + ' ms'; setTimeout(runTrace, 4200); }
-  })();
-}
-runTrace();
-
-// embedding field: cursor acts as a query and retrieves its top-5 nearest points
-const cv = document.getElementById('field'), ctx = cv.getContext('2d');
-let W, H, pts = [], mouse = null;
-function resize() {
-  const dpr = Math.min(devicePixelRatio || 1, 2);
-  W = cv.clientWidth; H = cv.clientHeight;
-  cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  // clustered points, like topics in an embedding space
-  pts = [];
-  const clusters = Array.from({ length: 7 }, () => [Math.random() * W, Math.random() * H]);
-  const n = Math.min(260, Math.round(W * H / 5200));
-  for (let i = 0; i < n; i++) {
-    const [cx, cy] = clusters[i % clusters.length], r = 40 + Math.random() * 170, a = Math.random() * 6.283;
-    pts.push({ x: cx + Math.cos(a) * r * Math.random(), y: cy + Math.sin(a) * r * Math.random(), vx: (Math.random() - .5) * .12, vy: (Math.random() - .5) * .12 });
-  }
-}
-function draw() {
-  ctx.clearRect(0, 0, W, H);
-  for (const p of pts) {
-    if (!reduced) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
-    ctx.fillStyle = 'rgba(236,231,220,.22)';
-    ctx.fillRect(p.x, p.y, 1.6, 1.6);
-  }
-  if (mouse) {
-    const top = pts.map(p => [p, (p.x - mouse.x) ** 2 + (p.y - mouse.y) ** 2]).sort((a, b) => a[1] - b[1]).slice(0, 5);
-    ctx.strokeStyle = 'rgba(255,107,44,.55)'; ctx.fillStyle = '#ff6b2c'; ctx.font = '10px "IBM Plex Mono", monospace';
-    top.forEach(([p, d], i) => {
-      ctx.beginPath(); ctx.moveTo(mouse.x, mouse.y); ctx.lineTo(p.x, p.y); ctx.stroke();
-      ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, 6.283); ctx.fill();
-      ctx.fillText(`#${i + 1} ${(1 / (1 + Math.sqrt(d) / 120)).toFixed(2)}`, p.x + 7, p.y - 6);
-    });
-    ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 5, 0, 6.283); ctx.strokeStyle = '#ff6b2c'; ctx.stroke();
-  }
-  requestAnimationFrame(draw);
-}
-const hero = document.querySelector('.hero');
-hero.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top }; });
-hero.addEventListener('pointerleave', () => mouse = null);
-addEventListener('resize', resize);
-resize(); draw();
-</script>
+<footer>© 2026 Aymen Jeddou</footer>
+</main>
 </body>
 </html>
