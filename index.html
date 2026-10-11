@@ -3,170 +3,438 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aymen Jeddou · Data &amp; AI engineering</title>
-<meta name="description" content="Aymen Jeddou, software and data engineering student in Bizerte, Tunisia. I build data pipelines and AI systems, and measure whether they work.">
-<meta property="og:title" content="Aymen Jeddou · Data & AI engineering">
-<meta property="og:description" content="I build data pipelines and AI systems, and measure whether they work.">
+<title>Aymen Jeddou · builder of HiresHere · data &amp; AI engineering</title>
+<meta name="description" content="Aymen Jeddou, software and data engineering student in Bizerte, Tunisia. Builder of HiresHere. Open for a PFE internship in data or AI, 2027.">
+<meta property="og:title" content="Aymen Jeddou · builder of HiresHere">
+<meta property="og:description" content="Software and data engineering student in Bizerte, Tunisia. Open for a PFE internship in data or AI, 2027.">
 <meta property="og:image" content="https://aymenjeddou.github.io/assets/aymen.jpg">
 <meta property="og:url" content="https://aymenjeddou.github.io/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://aymenjeddou.github.io/">
-<meta name="color-scheme" content="light dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141414'/%3E%3Ctext x='16' y='21' font-family='system-ui,sans-serif' font-size='14' font-weight='600' fill='%23fff' text-anchor='middle'%3EAJ%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0B3A53">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 36'%3E%3Cpath d='M16 1C7.7 1 1 7.5 1 15.6 1 26.4 16 35 16 35s15-8.6 15-19.4C31 7.5 24.3 1 16 1z' fill='%230b3a53'/%3E%3Cpath d='M9.6 16l4.5 4.5 8.6-9' stroke='%23ff7a59' stroke-width='3.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root {
-  --bg: #fbfbf9; --fg: #161616; --muted: #66645f; --line: #e6e4df; --accent: #b4441b;
-  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("assets/fonts/bricolage.woff2") format("woff2-variations");
+  font-weight: 200 800; font-stretch: 75% 100%; font-display: swap;
 }
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #121212; --fg: #ecebe8; --muted: #a09d96; --line: #2a2927; --accent: #f0875c; }
+:root {
+  --navy: #0b3a53; --navy-2: #155f80; --navy-deep: #082c40;
+  --on-navy: #f2f7fa; --on-navy-2: #b9d3e0; --navy-line: #3a6c85;
+  --coral: #ff7a59; --coral-ink: #2a0d05; --coral-deep: #c2410c;
+  --go: #157a43; --go-bg: #e7f4ec;
+  --ground: #f1f4f6; --surface: #ffffff; --ink: #14202b; --ink-2: #47515e; --line: #dde2e8;
+  --font: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --wrap: 1180px;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.65 var(--font); -webkit-font-smoothing: antialiased; }
-main { max-width: 720px; margin: 0 auto; padding: 72px 24px 48px; }
-a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px; }
-a:hover { color: var(--accent); text-decoration-color: currentColor; }
-h1 { font-size: 1.9rem; line-height: 1.2; margin: 0; letter-spacing: -.01em; }
-h2 { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 64px 0 20px; }
-h3 { font-size: 1.05rem; margin: 0; }
-p { margin: 0 0 14px; }
-ul { margin: 0; padding-left: 1.1em; }
-li { margin-bottom: 6px; }
-.muted { color: var(--muted); }
-.small { font-size: .9rem; }
-.mono { font-family: var(--mono); font-size: .85em; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 400 17px/1.6 var(--font); font-variation-settings: "opsz" 14; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--coral); color: var(--coral-ink); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--coral-deep); }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+h1, h2, h3 { font-variation-settings: "opsz" 96; letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 40px; max-width: 18ch; }
+h3 { font-size: 1.6rem; font-weight: 700; }
+p { margin: 0 0 12px; }
+.ink-2 { color: var(--ink-2); }
 
-header { display: flex; gap: 24px; align-items: center; }
-header img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex: none; }
-.intro { margin-top: 28px; font-size: 1.1rem; }
-.links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-size: .95rem; }
-.status { display: inline-block; margin-top: 18px; font-size: .9rem; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; }
+/* the mark */
+.mark { width: 28px; height: 32px; flex: none; }
 
-.item { padding: 18px 0; border-top: 1px solid var(--line); }
-h2 + .item { border-top: 0; padding-top: 0; }
-.row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
-.when { color: var(--muted); font-size: .9rem; white-space: nowrap; }
-.item p { margin: 6px 0 0; }
-.item ul { margin-top: 8px; }
-.stack { color: var(--muted); font-size: .88rem; margin-top: 6px; }
-.figures { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 10px; font-size: .92rem; }
-.figures b { font-weight: 600; }
+/* buttons and pills, HiresHere grammar */
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; font: 600 1rem var(--font); text-decoration: none; transition: transform .2s cubic-bezier(.2,.7,.2,1), background-color .2s; }
+.btn svg { width: 18px; height: 18px; }
+.btn-coral { background: var(--coral); color: var(--coral-ink); }
+.btn-coral:hover { background: #ff9374; color: var(--coral-ink); transform: translateY(-1px); }
+.btn-line { color: var(--on-navy); box-shadow: inset 0 0 0 1.5px var(--navy-line); }
+.btn-line:hover { color: var(--on-navy); box-shadow: inset 0 0 0 1.5px var(--on-navy-2); transform: translateY(-1px); }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px; font-weight: 600; font-size: .95rem; background: var(--go); color: #fff; }
+.pill .tick { width: 20px; height: 20px; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+.pill .tick svg { width: 12px; height: 12px; }
+.pill.soft { background: var(--go-bg); color: var(--go); padding: 3px 12px 3px 6px; font-size: .82rem; }
+.pill.soft .tick { background: var(--go); width: 16px; height: 16px; }
+.pill.soft .tick svg { width: 9px; height: 9px; }
+.pill.open { background: transparent; color: var(--ink-2); box-shadow: inset 0 0 0 1.5px var(--line); padding: 3px 12px; font-size: .82rem; }
 
-footer { margin-top: 72px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+/* proof line: the sentence that backs the claim */
+.proof { margin-top: 18px; border-left: 2px solid var(--coral); padding: 2px 0 2px 14px; font-size: .9rem; color: var(--ink-2); }
+.proof summary { cursor: pointer; list-style: none; display: flex; gap: 8px; align-items: baseline; }
+.proof summary::-webkit-details-marker { display: none; }
+.proof summary b { color: var(--ink); font-weight: 600; }
+.proof summary .more { margin-left: auto; color: var(--coral-deep); font-weight: 600; white-space: nowrap; }
+.proof[open] summary .more { opacity: .6; }
+.proof .why { margin: 8px 0 0; }
+
+/* hero */
+.hero { background: var(--navy); color: var(--on-navy); position: relative; overflow: hidden; }
+.top { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; color: var(--on-navy); }
+.brand:hover { color: var(--on-navy); }
+.top nav { display: flex; gap: 28px; font-size: .95rem; }
+.top nav a { text-decoration: none; color: var(--on-navy-2); }
+.top nav a:hover { color: #fff; }
+.hero-grid > *, .feature > *, .project > *, .job > * { min-width: 0; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding: 48px 0 0; min-height: min(80vh, 760px); }
+.hero h1 { font-size: clamp(3.6rem, 8.5vw, 6rem); font-weight: 800; line-height: .95; letter-spacing: -0.035em; }
+.hero h1 span { color: var(--coral); }
+.hero .role { font-size: 1.25rem; line-height: 1.5; color: var(--on-navy-2); max-width: 30ch; margin: 22px 0 28px; }
+.hero .role b { color: var(--on-navy); font-weight: 600; }
+.hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.hero .proof { border-color: var(--coral); color: var(--on-navy-2); max-width: 46ch; }
+.hero .proof b { color: var(--on-navy); }
+
+.map { position: relative; width: 100%; max-width: 520px; justify-self: end; aspect-ratio: 34 / 42; }
+.map svg.coast { position: absolute; inset: 0; width: 100%; height: 100%; }
+.land { fill: none; stroke: var(--navy-line); stroke-width: .14; stroke-linejoin: round; }
+.land.tn { fill: rgba(255,255,255,.04); stroke: var(--on-navy-2); stroke-width: .2; }
+.place { position: absolute; transform: translate(-50%, -100%); }
+.place .pin { width: 168px; filter: drop-shadow(0 18px 20px rgba(0,0,0,.3)); animation: drop .9s cubic-bezier(.16,1,.3,1) both .25s; transform-origin: 50% 100%; }
+.place .pin img { position: absolute; left: 50%; top: 13px; width: 130px; height: 130px; border-radius: 50%; transform: translateX(-50%); object-fit: cover; }
+.place .label { position: absolute; left: 92%; bottom: 6px; margin-left: 10px; white-space: nowrap; font-size: .85rem; color: var(--on-navy-2); }
+.place .label b { color: #fff; font-weight: 600; display: block; font-size: 1rem; }
+.place .ring { position: absolute; left: 50%; bottom: -7px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--coral); }
+@keyframes drop { from { transform: translateY(-60px) scale(.96); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* the HiresHere screenshot rises out of the hero */
+.feature-shot { position: relative; margin-top: 56px; }
+.frame { background: var(--surface); border-radius: 14px; overflow: hidden; box-shadow: 0 1px 0 var(--line), 0 24px 48px -24px rgba(16,24,32,.28); }
+.frame .bar { display: flex; align-items: center; gap: 10px; min-height: 38px; padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: .8rem; color: var(--ink-2); background: #fafbfc; }
+.frame .bar a { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.frame .bar svg { width: 12px; height: 12px; }
+.hero .feature-shot .frame { border-radius: 14px 14px 0 0; }
+
+/* sections */
+section { padding: 112px 0; }
+.lead { font-size: 1.2rem; max-width: 60ch; }
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding-top: 8px; }
+.feature ul, .project ul { margin: 14px 0 0; padding-left: 1.1em; }
+.feature li, .project li { margin-bottom: 6px; }
+.figures { margin-top: 22px; font-size: 1.05rem; color: var(--ink-2); }
+.figures b { color: var(--navy); font-weight: 700; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; font-weight: 600; }
+.links a { display: inline-flex; align-items: center; gap: 6px; color: var(--navy-2); }
+.links svg { width: 14px; height: 14px; }
+.stack { margin-top: 14px; font-size: .88rem; color: var(--ink-2); }
+
+.projects { display: grid; gap: 88px; margin-top: 96px; }
+.project { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; }
+.project:nth-child(even) { grid-template-columns: 7fr 5fr; }
+.project:nth-child(even) .text { order: 2; }
+.meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: .88rem; color: var(--ink-2); margin-top: 8px; }
+.project p { margin-top: 10px; }
+.shot-note { margin-top: 8px; font-size: .78rem; color: var(--ink-2); }
+.diagram { background: var(--surface); border-radius: 14px; padding: 28px; box-shadow: 0 1px 0 var(--line), 0 24px 48px -24px rgba(16,24,32,.22); }
+.diagram text { font: 500 14px var(--font); fill: var(--ink); }
+.diagram .sub { font-size: 12px; fill: var(--ink-2); }
+.diagram rect { fill: var(--ground); stroke: var(--line); }
+.diagram .hl rect { fill: #e8f1f6; stroke: var(--navy-2); }
+.diagram path { stroke: var(--navy-2); stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+
+/* experience, with ruled before→after scales */
+.work { background: var(--surface); }
+.job { display: grid; grid-template-columns: 260px 1fr; gap: 48px; padding: 40px 0; border-top: 1px solid var(--line); }
+.job:first-of-type { border-top: 0; padding-top: 0; }
+.job .when { color: var(--ink-2); font-size: .95rem; }
+.job .org { font-weight: 700; font-size: 1.1rem; margin-top: 4px; }
+.job .proof { max-width: 620px; }
+.scales { display: grid; gap: 22px; margin: 24px 0 8px; max-width: 620px; }
+.scale .row { display: flex; justify-content: space-between; font-size: .9rem; margin-bottom: 8px; }
+.scale .row b { font-weight: 700; }
+.rule { position: relative; height: 26px; }
+.rule::before { content: ""; position: absolute; left: 0; right: 0; top: 12px; height: 2px; background: var(--line); }
+.rule i { position: absolute; top: 4px; width: 1px; height: 18px; background: #c3cad3; }
+.rule .from, .rule .to { position: absolute; top: 6px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; }
+.rule .from { background: var(--surface); box-shadow: inset 0 0 0 2px var(--ink-2); }
+.rule .to { background: var(--go); }
+.rule .gain { position: absolute; top: 12px; height: 2px; background: var(--go); }
+
+/* open source */
+.oss { display: grid; gap: 0; }
+.oss a.row { display: grid; grid-template-columns: 240px 1fr auto; gap: 24px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--line); text-decoration: none; }
+.oss a.row:last-child { border-bottom: 1px solid var(--line); }
+.oss .repo { font-weight: 700; }
+.oss .what { color: var(--ink-2); }
+.oss a.row:hover .repo { color: var(--coral-deep); }
+
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.skills h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.skills p { color: var(--ink-2); }
+.edu { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding-top: 32px; border-top: 1px solid var(--line); font-size: .95rem; }
+.edu b { display: block; }
+
+/* close */
+.close { background: var(--navy); color: var(--on-navy); padding: 104px 0 40px; }
+.close h2 { color: var(--on-navy); }
+.close .email { font-size: clamp(1.8rem, 5vw, 3.6rem); font-weight: 700; letter-spacing: -0.02em; color: #fff; text-decoration: none; font-variation-settings: "opsz" 96; }
+.close .email:hover { color: var(--coral); }
+.close .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+.close footer { margin-top: 96px; padding-top: 22px; border-top: 1px solid var(--navy-line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .85rem; color: var(--on-navy-2); }
+
+@media (max-width: 960px) {
+  .hero-grid, .feature, .project, .project:nth-child(even), .job { grid-template-columns: 1fr; gap: 28px; }
+  .project:nth-child(even) .text { order: 0; }
+  .map { max-width: min(420px, 100%); justify-self: center; }
+  .top nav { display: none; }
+  .skills, .edu { grid-template-columns: 1fr; gap: 20px; }
+  .oss a.row { grid-template-columns: 1fr; gap: 6px; } .oss .pill { justify-self: start; }
+}
 @media (max-width: 560px) {
-  main { padding-top: 48px; }
-  header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  h1 { font-size: 1.6rem; }
+  .wrap { padding: 0 20px; }
+  section { padding: 80px 0; }
+  .hero-grid { padding-top: 24px; }
+  .place .pin { width: 128px; }
+  .place .pin img { width: 98px; height: 98px; top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 </style>
 </head>
 <body>
-<main>
 
-<header>
-  <img src="assets/aymen.jpg" alt="Aymen Jeddou" width="84" height="84">
-  <div>
-    <h1>Aymen Jeddou</h1>
-    <div class="muted">Software &amp; Data Engineering student · Bizerte, Tunisia</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="m" viewBox="0 0 32 36"><path d="M16 1C7.7 1 1 7.5 1 15.6 1 26.4 16 35 16 35s15-8.6 15-19.4C31 7.5 24.3 1 16 1z" fill="#fff"/><path d="M9.6 16l4.5 4.5 8.6-9" stroke="#ff7a59" stroke-width="3.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="tick" viewBox="0 0 12 12"><path d="M2.2 6.3l2.4 2.4 5-5.2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="out" viewBox="0 0 16 16"><path d="M6 3h7v7M13 3L4 12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="down" viewBox="0 0 16 16"><path d="M8 2v9M4 7.5l4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="mail" viewBox="0 0 16 16"><path d="M2 4h12v8H2zM2.5 4.5L8 9l5.5-4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></symbol>
+  <symbol id="lock" viewBox="0 0 16 16"><path d="M4 7h8v6H4zM5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.4" fill="none"/></symbol>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="#top" id="top"><svg class="mark"><use href="#m"/></svg>Aymen Jeddou</a>
+      <nav aria-label="Sections">
+        <a href="#built">What I've built</a>
+        <a href="#worked">Experience</a>
+        <a href="#open-source">Open source</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1>Aymen<br>Jeddou<span>.</span></h1>
+        <p class="role">Software &amp; data engineering student in Bizerte, Tunisia. I built and run <b>HiresHere</b>, a live job site with a data pipeline and an AI classifier behind it.</p>
+        <span class="pill"><span class="tick"><svg style="color:var(--go)"><use href="#tick"/></svg></span>Open for a PFE in data or AI, 2027</span>
+        <div class="actions">
+          <a class="btn btn-coral" href="assets/Aymen_Jeddou_CV_EN.pdf"><svg><use href="#down"/></svg>CV in English</a>
+          <a class="btn btn-line" href="assets/Aymen_Jeddou_CV_FR.pdf"><svg><use href="#down"/></svg>CV en français</a>
+          <a class="btn btn-line" href="mailto:aymenjeddou03@gmail.com"><svg><use href="#mail"/></svg>Email</a>
+        </div>
+        <div class="proof"><b>Engineering degree, Software &amp; Data Engineering</b>, Faculty of Sciences of Bizerte, 2024 to 2027. Arabic, French and English.</div>
+      </div>
+
+      <div class="map" aria-hidden="true">
+        <svg class="coast" viewBox="489 138 34 42" preserveAspectRatio="xMidYMid meet"><path class="land" d="M457.39,185.22L457.45,184.61L457.45,184.40L457.51,180.67L461.74,178.35L464.32,177.87L466.45,177.03L467.46,175.46L470.48,174.21L470.62,171.88L472.11,171.61L473.28,170.44L476.64,169.92L477.11,168.69L476.44,168.03L475.57,164.71L475.43,162.80L474.49,160.79L476.94,159.07L479.67,158.53L481.27,157.24L483.70,156.28L487.98,155.73L492.14,155.47L493.42,155.93L495.78,154.70L498.47,154.68L499.51,155.40L501.23,155.22L500.76,156.82L501.24,159.81L500.71,162.40L499.18,164.15L499.45,166.52L501.58,168.39L501.63,169.15L503.24,170.42L504.47,176.06L505.37,178.84L505.55,180.30L505.15,182.87L505.38,184.31L505.08,186.02L505.35,188.00L504.34,189.31L505.93,191.61L506.06,192.95L507.03,194.71L508.25,194.13L510.35,195.59L511.55,197.56L502.63,203.55L495.05,209.71L491.32,211.11L488.38,211.42L488.34,209.42L487.11,208.91L485.45,208.01L484.82,206.54L475.91,199.69L467.10,192.84Z"/>
+<path class="land" d="M545.94,202.18L546.21,208.45L543.16,208.46L543.18,209.78L532.41,203.77L521.70,197.75L519.10,199.47L517.26,200.64L515.74,198.92L511.55,197.56L510.35,195.59L508.25,194.13L507.03,194.71L506.06,192.95L505.93,191.61L504.34,189.31L505.35,188.00L505.08,186.02L505.38,184.31L505.15,182.87L505.55,180.30L505.37,178.84L504.47,176.06L505.71,175.34L505.90,174.00L505.59,172.71L507.32,171.49L508.09,170.49L509.31,169.58L509.38,167.17L512.42,168.25L513.49,167.98L515.65,168.50L519.10,169.91L520.42,172.71L522.76,173.31L526.44,174.63L529.27,176.19L530.49,175.38L531.65,173.93L530.92,171.52L531.64,169.99L533.41,168.52L535.15,168.09L538.65,168.74L539.61,170.14L540.58,170.15L541.42,170.69L544.00,171.06L544.70,172.10L543.86,173.61L544.35,174.95L543.81,176.9L544.74,179.43L545.38,190.61Z"/>
+<path class="land" d="M505.13,124.35L506.62,124.78L506.86,124.2L509.21,123.67L509.80,124.73L513.30,125.52L513.12,127.03L513.78,128.34L511.83,127.89L509.91,128.99L510.12,130.51L509.86,131.39L510.74,132.96L513.12,134.52L514.49,137.08L517.37,139.58L519.29,139.56L519.94,140.25L519.28,140.87L521.57,141.99L523.45,142.93L525.68,144.56L525.98,145.14L525.58,146.26L524.11,144.80L521.91,144.29L520.99,146.30L522.85,147.46L522.65,149.09L521.62,149.28L520.43,151.96L519.39,152.20L519.35,151.24L519.78,149.56L520.28,148.90L519.21,147.09L518.36,145.52L517.31,145.13L516.51,143.78L514.88,143.22L513.75,141.96L511.90,141.76L509.90,140.36L507.56,138.34L505.81,136.55L504.93,133.49L503.70,133.13L501.68,132.12L500.57,132.53L499.20,133.97L498.19,134.19L498.44,132.85L497.10,132.46L496.40,130.07L497.22,129.14L496.47,127.98L496.54,127.11L497.61,127.77L498.77,127.62L500.10,126.58L500.53,127.07L501.68,126.97L502.15,125.73L503.96,126.12L504.99,125.60ZM517.04,151.46L518.93,151.19L518.15,153.66L518.57,154.63L518.12,156.23L516.13,155.06L514.84,154.72L511.26,153.13L511.54,151.52L514.49,151.80ZM501.6,142.86L502.80,141.90L504.36,144.11L504.15,148.24L503.01,148.04L502.03,149.08L501.06,148.25L500.85,144.49L500.23,142.71Z"/>
+<path class="land tn" d="M504.47,176.06L503.24,170.42L501.63,169.15L501.58,168.39L499.45,166.52L499.18,164.15L500.71,162.40L501.24,159.81L500.76,156.82L501.23,155.22L503.94,153.95L505.72,154.33L505.69,155.91L507.79,154.76L507.99,155.36L506.78,156.90L506.81,158.35L507.71,159.13L507.47,161.84L505.85,163.42L506.38,165.13L507.70,165.18L508.39,166.68L509.38,167.17L509.31,169.58L508.09,170.49L507.32,171.49L505.59,172.71L505.90,174.00L505.71,175.34Z"/></svg>
+        <div class="place" style="left:42.9%;top:38.8%">
+          <div class="pin"><svg viewBox="0 0 32 36" width="100%"><path d="M16 1C7.7 1 1 7.5 1 15.6 1 26.4 16 35 16 35s15-8.6 15-19.4C31 7.5 24.3 1 16 1z" fill="#fff"/></svg><img src="assets/aymen.jpg" alt="" width="130" height="130"></div>
+          <span class="ring"></span>
+          <span class="label"><b>Bizerte</b>Tunisia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-shot">
+      <div class="frame">
+        <div class="bar"><svg><use href="#lock"/></svg><a href="https://hireshere.app/jobs?c=TN">hireshere.app/jobs</a></div>
+        <a href="https://hireshere.app/jobs?c=TN"><img src="assets/work/hireshere.jpg" alt="HiresHere job search for Tunisia: 352 jobs, each with a verdict such as You can apply" width="1400" height="875" loading="eager"></a>
+      </div>
+    </div>
   </div>
 </header>
 
-<p class="intro">I build data pipelines and AI systems, and I measure whether they work. Most of the AI bugs I've fixed turned out to be data bugs, so that's where I spend my time.</p>
-<span class="status">Looking for a PFE internship in data or AI, 2027</span>
-<nav class="links">
-  <a href="mailto:aymenjeddou03@gmail.com">aymenjeddou03@gmail.com</a>
-  <a href="https://github.com/AymenJeddou">GitHub</a>
-  <a href="https://www.linkedin.com/in/aymen-jeddou-72891726a/">LinkedIn</a>
-  <a href="assets/Aymen_Jeddou_CV_EN.pdf">CV (EN)</a>
-  <a href="assets/Aymen_Jeddou_CV_FR.pdf">CV (FR)</a>
-</nav>
+<main>
+<section id="built">
+  <div class="wrap">
+    <div class="feature">
+      <div>
+        <h2>What has he built?</h2>
+        <h3>HiresHere</h3>
+        <div class="meta" style="margin-top:10px"><span class="pill soft"><span class="tick"><svg style="color:#fff"><use href="#tick"/></svg></span>Live</span> <span class="ink-2">Solo, since October 2026</span></div>
+        <p class="lead" style="margin-top:12px">A remote job site that tells you which jobs you can actually apply for from your country, and quotes the line in the posting that proves it.</p>
+        <div class="links"><a href="https://hireshere.app">hireshere.app <svg><use href="#out"/></svg></a></div>
+      </div>
+      <div>
+        <ul>
+          <li>A daily GitHub Actions pipeline reads the public job feeds of about 540 companies (Greenhouse, Lever, Ashby, SmartRecruiters, Workable, Recruitee, Teamtailor) plus Remote OK and Jobicy, and keeps each employer's posting date.</li>
+          <li>Gemini batch reads each remote or hybrid posting once and fills a typed Pydantic schema: who may apply, time zones, seniority, the evidence quote.</li>
+          <li>Plain Python rules turn that into a verdict for each of 243 countries at export time, so adding a country costs no AI calls.</li>
+          <li>Astro on Cloudflare Pages, job pages rendered by Pages Functions, D1 for sign-ups, daily email alerts and a Telegram bot. English, French and Arabic.</li>
+        </ul>
+        <p class="figures"><b>11,566</b> jobs listed · <b>597</b> companies · <b>243</b> countries · <b>$1.85</b> to classify 4,563 postings</p>
+        <details class="proof">
+          <summary><b>Counted on the live site, 11 October 2026</b><span class="more">How</span></summary>
+          <p class="why">Jobs, companies and levels come from the site's own search index after that day's run; the cost is Gemini's batch estimate for the 4,563 postings classified the same day.</p>
+        </details>
+        <div class="stack">Python · httpx · Pydantic · SQLite · Gemini Batch API · Astro · Cloudflare · GitHub Actions</div>
+      </div>
+    </div>
 
-<h2>Now</h2>
+    <div class="projects">
+      <article class="project">
+        <div class="text">
+          <h3>Sabeel (RoadScan)</h3>
+          <div class="meta"><span>2026 · team of 4</span><span class="pill open">In progress</span></div>
+          <p>A citizen photographs a pothole, a YOLOv8n model grades its severity, two reports within 5 m merge into one, and a RAG agent drafts the repair order citing the actual law, routed to the municipality or the roads authority.</p>
+          <ul><li>I own the RAG work-order agent and the work sheets it produces.</li></ul>
+          <div class="stack">Chroma · YOLOv8n (ONNX) · FastAPI · PostGIS · Flutter · React</div>
+        </div>
+        <div><div class="frame"><img src="assets/work/sabeel.jpg" alt="Sabeel's model detecting a pothole: confidence 0.97, severity 4 out of 5" width="800" height="500" loading="lazy"></div></div>
+      </article>
 
-<div class="item">
-  <div class="row"><h3><a href="https://hireshere.app">HiresHere</a></h3><span class="when">Oct 2026 · solo, live</span></div>
-  <p>A remote job site that tells you which jobs you can actually apply for from your country, and quotes the line in the posting that proves it.</p>
-  <ul>
-    <li>Daily pipeline reads the public job feeds of about 540 companies (Greenhouse, Lever, Ashby, SmartRecruiters, Workable, Recruitee, Teamtailor) plus Remote OK and Jobicy.</li>
-    <li>Gemini batch extracts who may apply into a typed Pydantic schema; plain Python rules turn that into a verdict for each of 243 countries, so adding a country costs no AI calls.</li>
-    <li>Static Astro site on Cloudflare Pages, job pages from Pages Functions, D1 for sign-ups, email alerts and a Telegram bot. English, French and Arabic.</li>
-  </ul>
-  <div class="figures"><span><b>11,566</b> jobs listed</span><span><b>597</b> companies</span><span><b>243</b> countries</span><span><b>$1.85</b> to classify 4,563 postings</span></div>
-  <div class="stack">Python · httpx · Pydantic · SQLite · Gemini Batch API · Astro · Cloudflare · GitHub Actions</div>
-</div>
+      <article class="project">
+        <div class="text">
+          <h3>FSB Nexus</h3>
+          <div class="meta"><span>Summer 2026 · IDEALAB</span></div>
+          <p>A multi-agent assistant for the Faculty of Sciences of Bizerte that answers from the faculty's own documents and shows its sources. Hybrid retrieval over pgvector and Postgres full-text, fused with reciprocal rank fusion.</p>
+          <div class="links"><a href="https://github.com/AymenJeddou/digital_campus_platform">Code on GitHub <svg><use href="#out"/></svg></a></div>
+          <div class="stack">FastAPI · pgvector · Mistral · Next.js · Alembic · CI</div>
+        </div>
+        <div><div class="frame"><div class="bar">FSB Nexus · landing page</div><img src="assets/work/fsb-nexus.jpg" alt="FSB Nexus landing page: Pose ta question. Repars avec la source." width="1400" height="875" loading="lazy"></div></div>
+      </article>
 
-<div class="item">
-  <div class="row"><h3>RoadScan</h3><span class="when">2026 · team of 4, private</span></div>
-  <p>A citizen's pothole photo becomes a cited repair work order routed to the right authority. I own the RAG agent that looks up road-type rules and drafts the order.</p>
-  <div class="stack">Chroma · YOLOv8n (ONNX) · FastAPI · PostGIS · Flutter</div>
-</div>
+      <article class="project">
+        <div class="text">
+          <h3>FSBridge</h3>
+          <div class="meta"><span>2026</span><span class="pill soft"><span class="tick"><svg style="color:#fff"><use href="#tick"/></svg></span>Live</span></div>
+          <p>Student portal for FSB: GPA and honours on the Tunisian 20-point scale, timetables, PDF documents, and a Gemini assistant served through Supabase Edge Functions.</p>
+          <div class="links"><a href="https://fsbridge.vercel.app">fsbridge.vercel.app <svg><use href="#out"/></svg></a><a href="https://github.com/AymenJeddou/FSBridge">Code <svg><use href="#out"/></svg></a></div>
+          <div class="stack">React · TypeScript · Supabase · Gemini</div>
+        </div>
+        <div><div class="frame"><div class="bar"><svg><use href="#lock"/></svg><a href="https://fsbridge.vercel.app">fsbridge.vercel.app</a></div><img src="assets/work/fsbridge.jpg" alt="FSBridge home page: Ton portail étudiant qui pense, with a GPA of 15.42" width="1400" height="875" loading="lazy"></div></div>
+      </article>
 
-<h2>Experience</h2>
+      <article class="project">
+        <div class="text">
+          <h3>Mobility &amp; Environment ETL</h3>
+          <div class="meta"><span>2025 · private</span></div>
+          <p>An Airflow DAG over seven public datasets (crash reports, EV registrations, air traffic, GTFS transit, EPA facilities, car sales): extracted, staged, cleaned with pandas, quality-checked and loaded into Postgres.</p>
+          <div class="stack">Airflow · pandas · PostgreSQL · Docker Compose</div>
+        </div>
+        <div>
+          <div class="diagram" role="img" aria-label="Pipeline: seven public datasets, staged, cleaned with pandas, quality checks, loaded into PostgreSQL">
+            <svg viewBox="0 0 640 200" width="100%">
+              <defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L8 4L0 8z" fill="#155f80" stroke="none"/></marker></defs>
+              <g><rect x="4" y="40" width="130" height="120" rx="10"/><text x="20" y="72">7 public datasets</text><text class="sub" x="20" y="96">crashes · EV cars</text><text class="sub" x="20" y="114">air traffic · GTFS</text><text class="sub" x="20" y="132">EPA · car sales</text></g>
+              <path d="M136 100H168"/>
+              <g><rect x="172" y="72" width="96" height="56" rx="10"/><text x="190" y="98">extract</text><text class="sub" x="190" y="116">and stage</text></g>
+              <path d="M270 100H302"/>
+              <g><rect x="306" y="72" width="96" height="56" rx="10"/><text x="324" y="98">clean</text><text class="sub" x="324" y="116">pandas</text></g>
+              <path d="M404 100H436"/>
+              <g class="hl"><rect x="440" y="72" width="88" height="56" rx="10"/><text x="456" y="98">quality</text><text class="sub" x="456" y="116">checks</text></g>
+              <path d="M530 100H558"/>
+              <g><rect x="562" y="72" width="74" height="56" rx="10"/><text x="574" y="104">Postgres</text></g>
+              <text class="sub" x="172" y="170">one Airflow DAG, run in Docker Compose</text>
+            </svg>
+          </div>
+        </div>
+      </article>
 
-<div class="item">
-  <div class="row"><h3>RAG Engineer &amp; Scrum Master, IDEALAB</h3><span class="when">Jun to Aug 2026</span></div>
-  <p class="muted small">FSB Nexus, an academic assistant for the Faculty of Sciences of Bizerte.</p>
-  <ul>
-    <li>Built a multi-agent RAG pipeline (orientation, academic, administrative, learning) that answers with source citations.</li>
-    <li>Traced weak retrieval to a vector-index misconfiguration, then added hybrid search (pgvector + full-text, reciprocal rank fusion): hit@5 <b>0.50 → 0.90</b>, MRR <b>0.395 → 0.776</b>.</li>
-    <li>Built the evaluation harness the team used as its quality baseline (hit@5, MRR, recall@10, answer and wrong-answer rates).</li>
-    <li>Ran the backlog for a team of 4, integrated every branch, and shipped with CI (69 tests), Docker and Alembic migrations.</li>
-  </ul>
-</div>
+      <article class="project">
+        <div class="text">
+          <h3>AgroScan</h3>
+          <div class="meta"><span>2026</span></div>
+          <p>A Flutter app: photograph a leaf or an insect and get one of 40 North African crop pests identified by Gemini, with treatment advice in French, English or Arabic, and a scan history kept offline.</p>
+          <div class="links"><a href="https://github.com/AymenJeddou/AgroScan">Code on GitHub <svg><use href="#out"/></svg></a></div>
+          <div class="stack">Flutter · Riverpod · Gemini · Drift (SQLite)</div>
+        </div>
+        <div><div class="frame"><img src="assets/work/agroscan.jpg" alt="The citrus leafminer moth, one of the 40 pests AgroScan recognises" width="700" height="516" loading="lazy"></div><p class="shot-note">One of the 40 pests in the app's catalogue (citrus leafminer). Photo: Franck A., CIRAD.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
 
-<div class="item">
-  <div class="row"><h3>Automation &amp; Data Processing intern, OAK Visuals</h3><span class="when">Jul to Aug 2025</span></div>
-  <p>Automated multichannel customer journeys in Dynamics 365 and wired their data into central reporting with Power Automate and Microsoft Fabric.</p>
-</div>
+<section class="work" id="worked">
+  <div class="wrap">
+    <h2>Where has he worked?</h2>
+    <article class="job">
+      <div><div class="when">June to August 2026</div><div class="org">IDEALAB, Bizerte</div></div>
+      <div>
+        <h3>RAG Engineer &amp; Scrum Master, intern</h3>
+        <p class="ink-2" style="margin-top:8px">FSB Nexus, the academic assistant above, for the Faculty of Sciences of Bizerte.</p>
+        <div class="scales">
+          <div class="scale">
+            <div class="row"><span>hit@5, retrieval</span><span>0.50 → <b>0.90</b></span></div>
+            <div class="rule" aria-hidden="true"><i style="left:0"></i><i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i><i style="left:100%"></i><span class="gain" style="left:50%;width:40%"></span><span class="from" style="left:50%"></span><span class="to" style="left:90%"></span></div>
+          </div>
+          <div class="scale">
+            <div class="row"><span>MRR, ranking</span><span>0.395 → <b>0.776</b></span></div>
+            <div class="rule" aria-hidden="true"><i style="left:0"></i><i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i><i style="left:100%"></i><span class="gain" style="left:39.5%;width:38.1%"></span><span class="from" style="left:39.5%"></span><span class="to" style="left:77.6%"></span></div>
+          </div>
+        </div>
+        <details class="proof">
+          <summary><b>Measured with the evaluation harness I built for the team</b><span class="more">How</span></summary>
+          <p class="why">An annotated set and a 100-question set, scored on hit@5, MRR, recall@10, answer rate and wrong-answer rate. The jump came from finding a vector-index misconfiguration, then adding hybrid search (vector plus full-text, reciprocal rank fusion).</p>
+        </details>
+        <ul style="margin-top:20px">
+          <li>Built a multi-agent RAG pipeline (orientation, academic, administrative, learning) that answers with source citations.</li>
+          <li>Ran the backlog for a team of 4, integrated every branch, and shipped with CI (69 tests), Docker and Alembic migrations.</li>
+        </ul>
+      </div>
+    </article>
+    <article class="job">
+      <div><div class="when">July to August 2025</div><div class="org">OAK Visuals</div></div>
+      <div>
+        <h3>Automation &amp; Data Processing, intern</h3>
+        <p style="margin-top:10px">Automated multichannel customer journeys (email, SMS, push) in Dynamics 365 Customer Insights, and wired their data into central reporting with Power Automate and Microsoft Fabric.</p>
+      </div>
+    </article>
+  </div>
+</section>
 
-<h2>Selected projects</h2>
+<section id="open-source">
+  <div class="wrap">
+    <h2>Does he contribute to open source?</h2>
+    <div class="oss">
+      <a class="row" href="https://github.com/remoteintech/remote-jobs/pull/2270"><span class="repo">remoteintech/remote-jobs</span><span class="what">Pull request #2270: updated 9 company careers links that had moved, after checking all 884 profiles. Issue #2271 reports 9 whose domains no longer exist.</span><span class="pill open">Open PR</span></a>
+      <a class="row" href="https://github.com/kalil0321/ats-scrapers/issues/299"><span class="repo">kalil0321/ats-scrapers</span><span class="what">Issue #299: 82 dead company entries found while sampling 2,800 boards for HiresHere, each checked twice.</span><span class="pill open">Issue</span></a>
+      <a class="row" href="https://github.com/pydantic/pydantic-ai/issues/1771"><span class="repo">pydantic/pydantic-ai</span><span class="what">Issue #1771: Gemini Batch API requirements for batch support, from running it in production on HiresHere.</span><span class="pill open">Discussion</span></a>
+    </div>
+  </div>
+</section>
 
-<div class="item">
-  <div class="row"><h3><a href="https://github.com/AymenJeddou/digital_campus_platform">FSB Nexus</a></h3><span class="when">2026</span></div>
-  <p>The multi-agent assistant from my IDEALAB internship: hybrid retrieval over pgvector and Postgres full-text, auth, chat sessions and document ingestion.</p>
-  <div class="stack">FastAPI · pgvector · Mistral · Alembic</div>
-</div>
-
-<div class="item">
-  <div class="row"><h3>Mobility &amp; Environment ETL</h3><span class="when">2025 · private</span></div>
-  <p>An Airflow DAG over seven public datasets (crashes, EV registrations, air traffic, GTFS transit, EPA facilities, car sales): staged, cleaned, quality-checked and loaded into Postgres.</p>
-  <div class="stack">Airflow · pandas · PostgreSQL · Docker Compose</div>
-</div>
-
-<div class="item">
-  <div class="row"><h3><a href="https://github.com/AymenJeddou/FSBridge">FSBridge</a></h3><span class="when">2026</span></div>
-  <p>Student portal with GPA and honours on the Tunisian 20-point scale, timetables, PDF documents and a Gemini assistant.</p>
-  <div class="stack">React · TypeScript · Supabase</div>
-</div>
-
-<div class="item">
-  <div class="row"><h3><a href="https://github.com/AymenJeddou/AgroScan">AgroScan</a></h3><span class="when">2026</span></div>
-  <p>Photograph a leaf or an insect and get one of 40 North African crop pests identified, with treatment advice in French, English or Arabic, and a scan history kept offline.</p>
-  <div class="stack">Flutter · Gemini · SQLite</div>
-</div>
-
-<h2>Open source</h2>
-<ul>
-  <li><a href="https://github.com/remoteintech/remote-jobs/pull/2270">remoteintech/remote-jobs #2270</a>: updated 9 company careers links that had moved, and reported 9 profiles whose domains no longer exist (<a href="https://github.com/remoteintech/remote-jobs/issues/2271">#2271</a>).</li>
-  <li><a href="https://github.com/kalil0321/ats-scrapers/issues/299">kalil0321/ats-scrapers #299</a>: found 82 dead company entries while sampling 2,800 boards.</li>
-  <li><a href="https://github.com/pydantic/pydantic-ai/issues/1771">pydantic/pydantic-ai #1771</a>: Gemini Batch API requirements for batch support, from running it in production.</li>
-</ul>
-
-<h2>Skills</h2>
-<p><b>Data:</b> SQL, PostgreSQL + pgvector, Airflow, pandas, SQLite, MongoDB, Supabase<br>
-<b>AI:</b> RAG, hybrid search, evaluation, Gemini, Mistral, sentence-transformers, scikit-learn, YOLOv8<br>
-<b>Engineering:</b> Python, TypeScript, FastAPI, Astro, React, Flutter, Docker, GitHub Actions, Cloudflare</p>
-
-<h2>Education</h2>
-<div class="item">
-  <div class="row"><h3>Engineering degree, Software &amp; Data Engineering</h3><span class="when">2024 to 2027</span></div>
-  <p class="muted">Faculty of Sciences of Bizerte (FSB), 3rd year. Preparatory cycle at FSB, 2022 to 2024.</p>
-</div>
-<p class="muted small">DataCamp: AI Fundamentals, Data Analyst Associate · Arabic (native), French (bilingual), English (C1)</p>
-
-<footer>© 2026 Aymen Jeddou</footer>
+<section class="work" style="padding-top:96px">
+  <div class="wrap">
+    <h2>What does he work with?</h2>
+    <div class="skills">
+      <div><h3>Data</h3><p>SQL, PostgreSQL + pgvector, Airflow, pandas, SQLite, MongoDB, Supabase, data quality checks</p></div>
+      <div><h3>AI</h3><p>RAG, hybrid search, evaluation harnesses, Gemini, Mistral, sentence-transformers, scikit-learn, YOLOv8</p></div>
+      <div><h3>Engineering</h3><p>Python, TypeScript, FastAPI, Pydantic, Astro, React, Flutter, Docker, GitHub Actions, Cloudflare</p></div>
+    </div>
+    <div class="edu">
+      <div><b>Engineering degree, Software &amp; Data Engineering</b><span class="ink-2">FSB, 2024 to 2027, 3rd year</span></div>
+      <div><b>Integrated preparatory cycle</b><span class="ink-2">FSB, 2022 to 2024</span></div>
+      <div><b>DataCamp</b><span class="ink-2">AI Fundamentals · Data Analyst Associate</span></div>
+    </div>
+  </div>
+</section>
 </main>
+
+<section class="close" id="contact">
+  <div class="wrap">
+    <h2>How do I reach him?</h2>
+    <a class="email" href="mailto:aymenjeddou03@gmail.com">aymenjeddou03@gmail.com</a>
+    <div class="actions">
+      <a class="btn btn-coral" href="assets/Aymen_Jeddou_CV_EN.pdf"><svg><use href="#down"/></svg>CV in English</a>
+      <a class="btn btn-line" href="assets/Aymen_Jeddou_CV_FR.pdf"><svg><use href="#down"/></svg>CV en français</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/aymen-jeddou-72891726a/">LinkedIn <svg><use href="#out"/></svg></a>
+      <a class="btn btn-line" href="https://github.com/AymenJeddou">GitHub <svg><use href="#out"/></svg></a>
+    </div>
+    <footer><span>© 2026 Aymen Jeddou · Bizerte, Tunisia</span><span>Pin mark from HiresHere · set in Bricolage Grotesque</span></footer>
+  </div>
+</section>
+
 </body>
 </html>
