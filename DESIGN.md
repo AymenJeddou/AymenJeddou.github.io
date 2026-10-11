@@ -1,22 +1,22 @@
 ---
 name: Aymen Jeddou, portfolio
-description: The Verdict Sheet. A recruiter's question answered in HiresHere's verdict language, every claim with its proof line.
+description: The Verdict Sheet: indigo night and saffron, a candidate card, every claim with its proof line.
 colors:
-  navy: "#0b3a53"
-  navy-2: "#155f80"
-  navy-line: "#3a6c85"
-  on-navy: "#f2f7fa"
-  on-navy-2: "#b9d3e0"
-  coral: "#ff7a59"
-  coral-ink: "#2a0d05"
-  coral-deep: "#c2410c"
-  go: "#157a43"
-  go-bg: "#e7f4ec"
-  ground: "#f1f4f6"
+  navy: "#17193b"
+  navy-2: "#3f47b0"
+  navy-line: "#3b3f72"
+  on-navy: "#eef0ff"
+  on-navy-2: "#b9bee8"
+  coral: "#f4b740"
+  coral-ink: "#2a1a00"
+  coral-deep: "#94570a"
+  go: "#17734b"
+  go-bg: "#e4f4ec"
+  ground: "#f3f4f8"
   surface: "#ffffff"
-  ink: "#14202b"
-  ink-2: "#47515e"
-  line: "#dde2e8"
+  ink: "#161827"
+  ink-2: "#4a4d63"
+  line: "#dee0ea"
 typography:
   display:
     fontFamily: "Bricolage Grotesque, ui-sans-serif, system-ui, sans-serif"
@@ -80,11 +80,11 @@ components:
 
 ## Overview
 
-The portfolio speaks HiresHere's language, because being the builder of HiresHere is the identity. A recruiter's question gets a verdict ("Open for a PFE in data or AI, 2027" in the green pill) and every claim below carries the line that proves it. Navy owns the first viewport and the close; the light ground carries the work in between. Section headings are the literal questions a recruiter asks.
+The portfolio borrows HiresHere's idea (a verdict plus the line that proves it) but has its own palette and no HiresHere logo: Aymen is the builder, not the brand. The green pill states the verdict ("Open for a PFE in data or AI, 2027") and every claim below carries the line that proves it. Navy owns the first viewport and the close; the light ground carries the work in between. Section headings are short and first person ("What I've built", "Where I've worked", "Get in touch"); all copy speaks as Aymen.
 
 ## Colors
 
-Two inks do the work: ocean navy (`navy`) as a full field for the hero and the close, coral (`coral`) as the only accent (the pin-and-check mark, proof rules, the primary button, the full stop after the name). Verdict green (`go`) appears only where something is proven or live; it is never decoration. Light sections sit on `ground`, with `surface` for frames and the experience band. Text on navy uses `on-navy` and `on-navy-2`, never grey.
+Two inks do the work: indigo night (`navy` token, #17193b) as a full field for the hero and the close, saffron (`coral` token, #f4b740) as the only accent (the AJ monogram, the avatar ring, proof rules, the primary button, the full stop after the name). Token names are historical; the values are the palette. Verdict green (`go`) appears only where something is proven or live; it is never decoration. Light sections sit on `ground`, with `surface` for frames and the experience band. Text on navy uses `on-navy` and `on-navy-2`, never grey.
 
 ## Typography
 
@@ -92,7 +92,7 @@ One face, Bricolage Grotesque, self-hosted from `assets/fonts/bricolage.woff2` (
 
 ## Layout
 
-Single page, 1180px wrap with 32px gutters (20px on phones). Hero is a two-column grid: name, role, verdict pill and actions on the left, a candidate card on the right (HiresHere job-card style: the portrait in the pin overlapping its top edge, role, "Available" pill, skill tags, a quoted line with its source); no location or map; the HiresHere screenshot rises out of the hero's bottom edge. Projects alternate text and image columns (5:7 then 7:5) and stack under 960px. Sections are 112px apart (80px on phones), more space above a heading than below.
+Single page, 1180px wrap with 32px gutters (20px on phones). Hero is a two-column grid: name, role, verdict pill and actions on the left, a candidate card on the right (HiresHere job-card style: the round portrait with a saffron ring overlapping its top edge, role, "Available" pill, skill tags, a quoted line with its source); no location or map; the HiresHere screenshot rises out of the hero's bottom edge. Projects alternate text and image columns (5:7 then 7:5) and stack under 960px. Sections are 112px apart (80px on phones), more space above a heading than below.
 
 ## Elevation & Depth
 
@@ -100,7 +100,7 @@ Flat fields with one depth device: project frames and the pin carry a soft, neut
 
 ## Shapes
 
-Pills (999px) for buttons, verdicts and statuses; 14px corners for screenshot frames and the diagram panel. The pin-and-check mark (from HiresHere's logo) is the only emblem.
+Pills (999px) for buttons, verdicts and statuses; 14px corners for screenshot frames and the diagram panel, 18px for the candidate card. The emblem is the AJ monogram (10px-radius saffron tile); the HiresHere logo is not used.
 
 ## Components
 
@@ -109,7 +109,7 @@ Pills (999px) for buttons, verdicts and statuses; 14px corners for screenshot fr
 - **Frame**: real screenshots in a white frame; a top bar shows the live URL when the project is live.
 - **Status pills**: green "Live" for live sites, outlined "In progress", "Open PR", "Issue", "Discussion" for everything not finished. Statuses are honest.
 - **Candidate card**: the hero's job card about Aymen; the README header (`AymenJeddou/assets/header.png`, rendered from `.impeccable/banner.html`) repeats it.
-- **Pin drop**: the only entrance motion, once on load (0.9s, ease-out expo), disabled under reduced motion.
+- **Motion**: hero lines rise in sequence, the card slides in and the avatar pops (ease-out expo); blocks reveal once on scroll; ruled scales move from before to after when seen; frames lift on hover; the verdict tick breathes slowly. All off under reduced motion, and content is visible without JavaScript.
 
 ## Do's and Don'ts
 
@@ -117,5 +117,7 @@ Pills (999px) for buttons, verdicts and statuses; 14px corners for screenshot fr
 - Do label third-party images with their credit (AgroScan's pest photo is CIRAD's).
 - Don't add eyebrows or kickers above headings; dates and statuses go below the title.
 - Don't set metrics as big-number tiles; inline bold figures or a ruled scale.
-- Don't use verdict green for anything not proven, or coral for a verdict.
+- Don't use verdict green for anything not proven, or saffron for a verdict.
+- Don't reuse HiresHere's logo or exact palette.
+- Don't list individual PRs or issues; open source is one line.
 - Don't invent claims, testimonials or merged statuses.

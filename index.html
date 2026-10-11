@@ -12,8 +12,9 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://aymenjeddou.github.io/">
-<meta name="theme-color" content="#0B3A53">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 36'%3E%3Cpath d='M16 1C7.7 1 1 7.5 1 15.6 1 26.4 16 35 16 35s15-8.6 15-19.4C31 7.5 24.3 1 16 1z' fill='%230b3a53'/%3E%3Cpath d='M9.6 16l4.5 4.5 8.6-9' stroke='%23ff7a59' stroke-width='3.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#17193B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2317193b'/%3E%3Ctext x='16' y='21.5' font-family='system-ui,sans-serif' font-size='14' font-weight='800' fill='%23f4b740' text-anchor='middle'%3EAJ%3C/text%3E%3C/svg%3E">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="preload" href="assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face {
@@ -22,11 +23,11 @@
   font-weight: 200 800; font-stretch: 75% 100%; font-display: swap;
 }
 :root {
-  --navy: #0b3a53; --navy-2: #155f80; --navy-deep: #082c40;
-  --on-navy: #f2f7fa; --on-navy-2: #b9d3e0; --navy-line: #3a6c85;
-  --coral: #ff7a59; --coral-ink: #2a0d05; --coral-deep: #c2410c;
-  --go: #157a43; --go-bg: #e7f4ec;
-  --ground: #f1f4f6; --surface: #ffffff; --ink: #14202b; --ink-2: #47515e; --line: #dde2e8;
+  --navy: #17193b; --navy-2: #3f47b0; --navy-deep: #0f1130;
+  --on-navy: #eef0ff; --on-navy-2: #b9bee8; --navy-line: #3b3f72;
+  --coral: #f4b740; --coral-ink: #2a1a00; --coral-deep: #94570a;
+  --go: #17734b; --go-bg: #e4f4ec;
+  --ground: #f3f4f8; --surface: #ffffff; --ink: #161827; --ink-2: #4a4d63; --line: #dee0ea;
   --font: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --wrap: 1180px;
 }
@@ -45,14 +46,12 @@ h3 { font-size: 1.6rem; font-weight: 700; }
 p { margin: 0 0 12px; }
 .ink-2 { color: var(--ink-2); }
 
-/* the mark */
-.mark { width: 28px; height: 32px; flex: none; }
 
 /* buttons and pills, HiresHere grammar */
 .btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; font: 600 1rem var(--font); text-decoration: none; transition: transform .2s cubic-bezier(.2,.7,.2,1), background-color .2s; }
 .btn svg { width: 18px; height: 18px; }
 .btn-coral { background: var(--coral); color: var(--coral-ink); }
-.btn-coral:hover { background: #ff9374; color: var(--coral-ink); transform: translateY(-1px); }
+.btn-coral:hover { background: #f8c866; color: var(--coral-ink); transform: translateY(-1px); }
 .btn-line { color: var(--on-navy); box-shadow: inset 0 0 0 1.5px var(--navy-line); }
 .btn-line:hover { color: var(--on-navy); box-shadow: inset 0 0 0 1.5px var(--on-navy-2); transform: translateY(-1px); }
 .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px; font-weight: 600; font-size: .95rem; background: var(--go); color: #fff; }
@@ -77,6 +76,7 @@ p { margin: 0 0 12px; }
 .top { display: flex; align-items: center; justify-content: space-between; height: 76px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; color: var(--on-navy); }
 .brand:hover { color: var(--on-navy); }
+.mono { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: var(--coral); color: var(--coral-ink); font-weight: 800; font-size: .85rem; letter-spacing: -0.02em; }
 .top nav { display: flex; gap: 28px; font-size: .95rem; }
 .top nav a { text-decoration: none; color: var(--on-navy-2); }
 .top nav a:hover { color: #fff; }
@@ -91,8 +91,7 @@ p { margin: 0 0 12px; }
 .hero .proof b { color: var(--on-navy); }
 
 .cand { position: relative; width: 100%; max-width: 440px; justify-self: end; padding-top: 72px; }
-.cand .pin { position: absolute; top: 0; left: 28px; width: 132px; filter: drop-shadow(0 16px 18px rgba(0,0,0,.28)); animation: drop .9s cubic-bezier(.16,1,.3,1) both .25s; transform-origin: 50% 100%; z-index: 1; }
-.cand .pin img { position: absolute; left: 50%; top: 10px; width: 102px; height: 102px; border-radius: 50%; transform: translateX(-50%); object-fit: cover; }
+.cand .avatar { position: absolute; top: 0; left: 28px; width: 128px; height: 128px; border-radius: 50%; object-fit: cover; border: 5px solid var(--surface); box-shadow: 0 0 0 3px var(--coral), 0 16px 30px -12px rgba(0,0,0,.45); z-index: 1; }
 .card { background: var(--surface); color: var(--ink); border-radius: 18px; padding: 92px 28px 26px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
 .card .top-row { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
 .card h3 { font-size: 1.5rem; }
@@ -135,7 +134,7 @@ section { padding: 112px 0; }
 .diagram text { font: 500 14px var(--font); fill: var(--ink); }
 .diagram .sub { font-size: 12px; fill: var(--ink-2); }
 .diagram rect { fill: var(--ground); stroke: var(--line); }
-.diagram .hl rect { fill: #e8f1f6; stroke: var(--navy-2); }
+.diagram .hl rect { fill: #eceefb; stroke: var(--navy-2); }
 .diagram path { stroke: var(--navy-2); stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
 
 /* experience, with ruled before→after scales */
@@ -156,13 +155,6 @@ section { padding: 112px 0; }
 .rule .to { background: var(--go); }
 .rule .gain { position: absolute; top: 12px; height: 2px; background: var(--go); }
 
-/* open source */
-.oss { display: grid; gap: 0; }
-.oss a.row { display: grid; grid-template-columns: 240px 1fr auto; gap: 24px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--line); text-decoration: none; }
-.oss a.row:last-child { border-bottom: 1px solid var(--line); }
-.oss .repo { font-weight: 700; }
-.oss .what { color: var(--ink-2); }
-.oss a.row:hover .repo { color: var(--coral-deep); }
 
 .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .skills h3 { font-size: 1.05rem; margin-bottom: 8px; }
@@ -178,13 +170,29 @@ section { padding: 112px 0; }
 .close .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
 .close footer { margin-top: 96px; padding-top: 22px; border-top: 1px solid var(--navy-line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .85rem; color: var(--on-navy-2); }
 
+
+/* motion: one entrance for the hero, one reveal per block, measured results that move */
+@keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes slide { from { opacity: 0; transform: translateX(40px) rotate(1.5deg); } to { opacity: 1; transform: none; } }
+@keyframes pop { 0% { opacity: 0; transform: scale(.6); } 70% { opacity: 1; transform: scale(1.04); } 100% { transform: none; } }
+@keyframes breathe { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.55); } 50% { box-shadow: 0 0 0 7px rgba(255,255,255,0); } }
+.js .hero h1, .js .hero .role, .js .hero .pill, .js .hero .actions, .js .hero-grid .proof { animation: rise .9s cubic-bezier(.16,1,.3,1) both; }
+.js .hero .role { animation-delay: .12s; } .js .hero .pill { animation-delay: .22s; } .js .hero .actions { animation-delay: .3s; } .js .hero-grid .proof { animation-delay: .38s; }
+.js .card { animation: slide 1s cubic-bezier(.16,1,.3,1) both .35s; }
+.js .cand .avatar { animation: pop .7s cubic-bezier(.16,1,.3,1) both .8s; }
+.js .feature-shot { animation: rise 1.1s cubic-bezier(.16,1,.3,1) both .5s; }
+.hero .pill .tick { animation: breathe 2.8s ease-in-out infinite 1.6s; }
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.16,1,.3,1) var(--d, 0s), transform .8s cubic-bezier(.16,1,.3,1) var(--d, 0s); }
+.js .reveal.in { opacity: 1; transform: none; }
+.rule .to, .rule .gain { transition: left 1.2s cubic-bezier(.16,1,.3,1) .2s, width 1.2s cubic-bezier(.16,1,.3,1) .2s; }
+.frame { transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s; }
+.project:hover .frame, .feature-shot:hover .frame { transform: translateY(-6px); box-shadow: 0 1px 0 var(--line), 0 36px 60px -28px rgba(16,24,32,.35); }
 @media (max-width: 960px) {
   .hero-grid, .feature, .project, .project:nth-child(even), .job { grid-template-columns: 1fr; gap: 28px; }
   .project:nth-child(even) .text { order: 0; }
   .cand { justify-self: stretch; max-width: none; }
   .top nav { display: none; }
   .skills, .edu { grid-template-columns: 1fr; gap: 20px; }
-  .oss a.row { grid-template-columns: 1fr; gap: 6px; } .oss .pill { justify-self: start; }
 }
 @media (max-width: 560px) {
   .wrap { padding: 0 20px; }
@@ -192,6 +200,7 @@ section { padding: 112px 0; }
   .hero-grid { padding-top: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; }
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 </style>
@@ -199,7 +208,6 @@ section { padding: 112px 0; }
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="m" viewBox="0 0 32 36"><path d="M16 1C7.7 1 1 7.5 1 15.6 1 26.4 16 35 16 35s15-8.6 15-19.4C31 7.5 24.3 1 16 1z" fill="#fff"/><path d="M9.6 16l4.5 4.5 8.6-9" stroke="#ff7a59" stroke-width="3.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="tick" viewBox="0 0 12 12"><path d="M2.2 6.3l2.4 2.4 5-5.2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="out" viewBox="0 0 16 16"><path d="M6 3h7v7M13 3L4 12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="down" viewBox="0 0 16 16"><path d="M8 2v9M4 7.5l4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -210,7 +218,7 @@ section { padding: 112px 0; }
 <header class="hero">
   <div class="wrap">
     <div class="top">
-      <a class="brand" href="#top" id="top"><svg class="mark"><use href="#m"/></svg>Aymen Jeddou</a>
+      <a class="brand" href="#top" id="top"><span class="mono" aria-hidden="true">AJ</span>Aymen Jeddou</a>
       <nav aria-label="Sections">
         <a href="#built">What I've built</a>
         <a href="#worked">Experience</a>
@@ -233,7 +241,7 @@ section { padding: 112px 0; }
       </div>
 
       <div class="cand">
-        <div class="pin"><svg viewBox="0 0 32 36" width="100%" aria-hidden="true"><path d="M16 1C7.7 1 1 7.5 1 15.6 1 26.4 16 35 16 35s15-8.6 15-19.4C31 7.5 24.3 1 16 1z" fill="#fff"/></svg><img src="assets/aymen.jpg" alt="Aymen Jeddou" width="102" height="102"></div>
+        <img class="avatar" src="assets/aymen.jpg" alt="Aymen Jeddou" width="128" height="128">
         <article class="card" aria-label="Candidate card">
           <div class="top-row">
             <div><h3>PFE intern, data or AI</h3><div class="co">Aymen Jeddou · 2027</div></div>
@@ -259,7 +267,7 @@ section { padding: 112px 0; }
   <div class="wrap">
     <div class="feature">
       <div>
-        <h2>What has he built?</h2>
+        <h2>What I've built</h2>
         <h3>HiresHere</h3>
         <div class="meta" style="margin-top:10px"><span class="pill soft"><span class="tick"><svg style="color:#fff"><use href="#tick"/></svg></span>Live</span> <span class="ink-2">Solo, since October 2026</span></div>
         <p class="lead" style="margin-top:12px">A remote job site that tells you which jobs you can actually apply for from your country, and quotes the line in the posting that proves it.</p>
@@ -357,7 +365,7 @@ section { padding: 112px 0; }
 
 <section class="work" id="worked">
   <div class="wrap">
-    <h2>Where has he worked?</h2>
+    <h2>Where I've worked</h2>
     <article class="job">
       <div><div class="when">June to August 2026</div><div class="org">IDEALAB</div></div>
       <div>
@@ -395,18 +403,14 @@ section { padding: 112px 0; }
 
 <section id="open-source">
   <div class="wrap">
-    <h2>Does he contribute to open source?</h2>
-    <div class="oss">
-      <a class="row" href="https://github.com/remoteintech/remote-jobs/pull/2270"><span class="repo">remoteintech/remote-jobs</span><span class="what">Pull request #2270: updated 9 company careers links that had moved, after checking all 884 profiles. Issue #2271 reports 9 whose domains no longer exist.</span><span class="pill open">Open PR</span></a>
-      <a class="row" href="https://github.com/kalil0321/ats-scrapers/issues/299"><span class="repo">kalil0321/ats-scrapers</span><span class="what">Issue #299: 82 dead company entries found while sampling 2,800 boards for HiresHere, each checked twice.</span><span class="pill open">Issue</span></a>
-      <a class="row" href="https://github.com/pydantic/pydantic-ai/issues/1771"><span class="repo">pydantic/pydantic-ai</span><span class="what">Issue #1771: Gemini Batch API requirements for batch support, from running it in production on HiresHere.</span><span class="pill open">Discussion</span></a>
-    </div>
+    <h2>Open source</h2>
+    <p class="lead">I'm a new open source contributor. I started with the tools and data I rely on for HiresHere: reporting and fixing problems in company directories, job-board datasets and AI frameworks, and sharing what running them in production taught me.</p>
   </div>
 </section>
 
 <section class="work" style="padding-top:96px">
   <div class="wrap">
-    <h2>What does he work with?</h2>
+    <h2>What I work with</h2>
     <div class="skills">
       <div><h3>Data</h3><p>SQL, PostgreSQL + pgvector, Airflow, pandas, SQLite, MongoDB, Supabase, data quality checks</p></div>
       <div><h3>AI</h3><p>RAG, hybrid search, evaluation harnesses, Gemini, Mistral, sentence-transformers, scikit-learn, YOLOv8</p></div>
@@ -423,7 +427,7 @@ section { padding: 112px 0; }
 
 <section class="close" id="contact">
   <div class="wrap">
-    <h2>How do I reach him?</h2>
+    <h2>Get in touch</h2>
     <a class="email" href="mailto:aymenjeddou03@gmail.com">aymenjeddou03@gmail.com</a>
     <div class="actions">
       <a class="btn btn-coral" href="assets/Aymen_Jeddou_CV_EN.pdf"><svg><use href="#down"/></svg>CV in English</a>
@@ -431,9 +435,33 @@ section { padding: 112px 0; }
       <a class="btn btn-line" href="https://www.linkedin.com/in/aymen-jeddou-72891726a/">LinkedIn <svg><use href="#out"/></svg></a>
       <a class="btn btn-line" href="https://github.com/AymenJeddou">GitHub <svg><use href="#out"/></svg></a>
     </div>
-    <footer><span>© 2026 Aymen Jeddou</span><span>Pin mark from HiresHere · set in Bricolage Grotesque</span></footer>
+    <footer><span>© 2026 Aymen Jeddou</span></footer>
   </div>
 </section>
 
+<script>
+(() => {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+  const blocks = document.querySelectorAll("main h2, .feature > *, .project, .job, .skills > div, .edu, main .lead, .close h2, .close .email, .close .actions");
+  // results start at "before" and move to "after" when seen
+  const rules = [...document.querySelectorAll(".rule")].map((r) => {
+    const from = r.querySelector(".from").style.left, to = r.querySelector(".to"), gain = r.querySelector(".gain");
+    const target = { to: to.style.left, w: gain.style.width };
+    to.style.left = from; gain.style.width = "0%";
+    return { r, to, gain, target };
+  });
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.classList.add("in");
+      const rule = rules.find((x) => x.r === e.target);
+      if (rule) { rule.to.style.left = rule.target.to; rule.gain.style.width = rule.target.w; }
+      io.unobserve(e.target);
+    }
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+  blocks.forEach((el, i) => { el.classList.add("reveal"); el.style.setProperty("--d", (el.matches(".feature > *, .skills > div") ? (i % 3) * 0.08 : 0) + "s"); io.observe(el); });
+  rules.forEach((x) => io.observe(x.r));
+})();
+</script>
 </body>
 </html>
