@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aymen Jeddou · builder of HiresHere · data &amp; AI engineering</title>
-<meta name="description" content="Aymen Jeddou, software and data engineering student in Bizerte, Tunisia. Builder of HiresHere. Open for a PFE internship in data or AI, 2027.">
+<meta name="description" content="Aymen Jeddou, software and data engineering student in Tunisia. Builder of HiresHere. Open for a PFE internship in data or AI, 2027.">
 <meta property="og:title" content="Aymen Jeddou · builder of HiresHere">
-<meta property="og:description" content="Software and data engineering student in Bizerte, Tunisia. Open for a PFE internship in data or AI, 2027.">
+<meta property="og:description" content="Software and data engineering student. Open for a PFE internship in data or AI, 2027.">
 <meta property="og:image" content="https://aymenjeddou.github.io/assets/aymen.jpg">
 <meta property="og:url" content="https://aymenjeddou.github.io/">
 <meta property="og:type" content="website">
@@ -90,16 +90,17 @@ p { margin: 0 0 12px; }
 .hero .proof { border-color: var(--coral); color: var(--on-navy-2); max-width: 46ch; }
 .hero .proof b { color: var(--on-navy); }
 
-.map { position: relative; width: 100%; max-width: 520px; justify-self: end; aspect-ratio: 34 / 42; }
-.map svg.coast { position: absolute; inset: 0; width: 100%; height: 100%; }
-.land { fill: none; stroke: var(--navy-line); stroke-width: .14; stroke-linejoin: round; }
-.land.tn { fill: rgba(255,255,255,.04); stroke: var(--on-navy-2); stroke-width: .2; }
-.place { position: absolute; transform: translate(-50%, -100%); }
-.place .pin { width: 168px; filter: drop-shadow(0 18px 20px rgba(0,0,0,.3)); animation: drop .9s cubic-bezier(.16,1,.3,1) both .25s; transform-origin: 50% 100%; }
-.place .pin img { position: absolute; left: 50%; top: 13px; width: 130px; height: 130px; border-radius: 50%; transform: translateX(-50%); object-fit: cover; }
-.place .label { position: absolute; left: 92%; bottom: 6px; margin-left: 10px; white-space: nowrap; font-size: .85rem; color: var(--on-navy-2); }
-.place .label b { color: #fff; font-weight: 600; display: block; font-size: 1rem; }
-.place .ring { position: absolute; left: 50%; bottom: -7px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--coral); }
+.cand { position: relative; width: 100%; max-width: 440px; justify-self: end; padding-top: 72px; }
+.cand .pin { position: absolute; top: 0; left: 28px; width: 132px; filter: drop-shadow(0 16px 18px rgba(0,0,0,.28)); animation: drop .9s cubic-bezier(.16,1,.3,1) both .25s; transform-origin: 50% 100%; z-index: 1; }
+.cand .pin img { position: absolute; left: 50%; top: 10px; width: 102px; height: 102px; border-radius: 50%; transform: translateX(-50%); object-fit: cover; }
+.card { background: var(--surface); color: var(--ink); border-radius: 18px; padding: 92px 28px 26px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+.card .top-row { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.card h3 { font-size: 1.5rem; }
+.card .co { color: var(--ink-2); margin-top: 4px; }
+.card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.card .tags span { font-size: .8rem; padding: 3px 10px; border-radius: 999px; background: var(--ground); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); }
+.card blockquote { margin: 20px 0 0; padding: 2px 0 2px 14px; border-left: 2px solid var(--coral); font-size: .95rem; color: var(--ink); }
+.card blockquote cite { display: block; margin-top: 6px; font-style: normal; font-size: .8rem; color: var(--ink-2); }
 @keyframes drop { from { transform: translateY(-60px) scale(.96); opacity: 0; } to { transform: none; opacity: 1; } }
 
 /* the HiresHere screenshot rises out of the hero */
@@ -180,7 +181,7 @@ section { padding: 112px 0; }
 @media (max-width: 960px) {
   .hero-grid, .feature, .project, .project:nth-child(even), .job { grid-template-columns: 1fr; gap: 28px; }
   .project:nth-child(even) .text { order: 0; }
-  .map { max-width: min(420px, 100%); justify-self: center; }
+  .cand { justify-self: stretch; max-width: none; }
   .top nav { display: none; }
   .skills, .edu { grid-template-columns: 1fr; gap: 20px; }
   .oss a.row { grid-template-columns: 1fr; gap: 6px; } .oss .pill { justify-self: start; }
@@ -189,8 +190,6 @@ section { padding: 112px 0; }
   .wrap { padding: 0 20px; }
   section { padding: 80px 0; }
   .hero-grid { padding-top: 24px; }
-  .place .pin { width: 128px; }
-  .place .pin img { width: 98px; height: 98px; top: 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
@@ -223,26 +222,26 @@ section { padding: 112px 0; }
     <div class="hero-grid">
       <div>
         <h1>Aymen<br>Jeddou<span>.</span></h1>
-        <p class="role">Software &amp; data engineering student in Bizerte, Tunisia. I built and run <b>HiresHere</b>, a live job site with a data pipeline and an AI classifier behind it.</p>
+        <p class="role">Software &amp; data engineering student. I built and run <b>HiresHere</b>, a live job site with a data pipeline and an AI classifier behind it.</p>
         <span class="pill"><span class="tick"><svg style="color:var(--go)"><use href="#tick"/></svg></span>Open for a PFE in data or AI, 2027</span>
         <div class="actions">
           <a class="btn btn-coral" href="assets/Aymen_Jeddou_CV_EN.pdf"><svg><use href="#down"/></svg>CV in English</a>
           <a class="btn btn-line" href="assets/Aymen_Jeddou_CV_FR.pdf"><svg><use href="#down"/></svg>CV en français</a>
           <a class="btn btn-line" href="mailto:aymenjeddou03@gmail.com"><svg><use href="#mail"/></svg>Email</a>
         </div>
-        <div class="proof"><b>Engineering degree, Software &amp; Data Engineering</b>, Faculty of Sciences of Bizerte, 2024 to 2027. Arabic, French and English.</div>
+        <div class="proof"><b>Engineering degree, Software &amp; Data Engineering</b>, Faculty of Sciences (FSB), 2024 to 2027. Arabic, French and English.</div>
       </div>
 
-      <div class="map" aria-hidden="true">
-        <svg class="coast" viewBox="489 138 34 42" preserveAspectRatio="xMidYMid meet"><path class="land" d="M457.39,185.22L457.45,184.61L457.45,184.40L457.51,180.67L461.74,178.35L464.32,177.87L466.45,177.03L467.46,175.46L470.48,174.21L470.62,171.88L472.11,171.61L473.28,170.44L476.64,169.92L477.11,168.69L476.44,168.03L475.57,164.71L475.43,162.80L474.49,160.79L476.94,159.07L479.67,158.53L481.27,157.24L483.70,156.28L487.98,155.73L492.14,155.47L493.42,155.93L495.78,154.70L498.47,154.68L499.51,155.40L501.23,155.22L500.76,156.82L501.24,159.81L500.71,162.40L499.18,164.15L499.45,166.52L501.58,168.39L501.63,169.15L503.24,170.42L504.47,176.06L505.37,178.84L505.55,180.30L505.15,182.87L505.38,184.31L505.08,186.02L505.35,188.00L504.34,189.31L505.93,191.61L506.06,192.95L507.03,194.71L508.25,194.13L510.35,195.59L511.55,197.56L502.63,203.55L495.05,209.71L491.32,211.11L488.38,211.42L488.34,209.42L487.11,208.91L485.45,208.01L484.82,206.54L475.91,199.69L467.10,192.84Z"/>
-<path class="land" d="M545.94,202.18L546.21,208.45L543.16,208.46L543.18,209.78L532.41,203.77L521.70,197.75L519.10,199.47L517.26,200.64L515.74,198.92L511.55,197.56L510.35,195.59L508.25,194.13L507.03,194.71L506.06,192.95L505.93,191.61L504.34,189.31L505.35,188.00L505.08,186.02L505.38,184.31L505.15,182.87L505.55,180.30L505.37,178.84L504.47,176.06L505.71,175.34L505.90,174.00L505.59,172.71L507.32,171.49L508.09,170.49L509.31,169.58L509.38,167.17L512.42,168.25L513.49,167.98L515.65,168.50L519.10,169.91L520.42,172.71L522.76,173.31L526.44,174.63L529.27,176.19L530.49,175.38L531.65,173.93L530.92,171.52L531.64,169.99L533.41,168.52L535.15,168.09L538.65,168.74L539.61,170.14L540.58,170.15L541.42,170.69L544.00,171.06L544.70,172.10L543.86,173.61L544.35,174.95L543.81,176.9L544.74,179.43L545.38,190.61Z"/>
-<path class="land" d="M505.13,124.35L506.62,124.78L506.86,124.2L509.21,123.67L509.80,124.73L513.30,125.52L513.12,127.03L513.78,128.34L511.83,127.89L509.91,128.99L510.12,130.51L509.86,131.39L510.74,132.96L513.12,134.52L514.49,137.08L517.37,139.58L519.29,139.56L519.94,140.25L519.28,140.87L521.57,141.99L523.45,142.93L525.68,144.56L525.98,145.14L525.58,146.26L524.11,144.80L521.91,144.29L520.99,146.30L522.85,147.46L522.65,149.09L521.62,149.28L520.43,151.96L519.39,152.20L519.35,151.24L519.78,149.56L520.28,148.90L519.21,147.09L518.36,145.52L517.31,145.13L516.51,143.78L514.88,143.22L513.75,141.96L511.90,141.76L509.90,140.36L507.56,138.34L505.81,136.55L504.93,133.49L503.70,133.13L501.68,132.12L500.57,132.53L499.20,133.97L498.19,134.19L498.44,132.85L497.10,132.46L496.40,130.07L497.22,129.14L496.47,127.98L496.54,127.11L497.61,127.77L498.77,127.62L500.10,126.58L500.53,127.07L501.68,126.97L502.15,125.73L503.96,126.12L504.99,125.60ZM517.04,151.46L518.93,151.19L518.15,153.66L518.57,154.63L518.12,156.23L516.13,155.06L514.84,154.72L511.26,153.13L511.54,151.52L514.49,151.80ZM501.6,142.86L502.80,141.90L504.36,144.11L504.15,148.24L503.01,148.04L502.03,149.08L501.06,148.25L500.85,144.49L500.23,142.71Z"/>
-<path class="land tn" d="M504.47,176.06L503.24,170.42L501.63,169.15L501.58,168.39L499.45,166.52L499.18,164.15L500.71,162.40L501.24,159.81L500.76,156.82L501.23,155.22L503.94,153.95L505.72,154.33L505.69,155.91L507.79,154.76L507.99,155.36L506.78,156.90L506.81,158.35L507.71,159.13L507.47,161.84L505.85,163.42L506.38,165.13L507.70,165.18L508.39,166.68L509.38,167.17L509.31,169.58L508.09,170.49L507.32,171.49L505.59,172.71L505.90,174.00L505.71,175.34Z"/></svg>
-        <div class="place" style="left:42.9%;top:38.8%">
-          <div class="pin"><svg viewBox="0 0 32 36" width="100%"><path d="M16 1C7.7 1 1 7.5 1 15.6 1 26.4 16 35 16 35s15-8.6 15-19.4C31 7.5 24.3 1 16 1z" fill="#fff"/></svg><img src="assets/aymen.jpg" alt="" width="130" height="130"></div>
-          <span class="ring"></span>
-          <span class="label"><b>Bizerte</b>Tunisia</span>
-        </div>
+      <div class="cand">
+        <div class="pin"><svg viewBox="0 0 32 36" width="100%" aria-hidden="true"><path d="M16 1C7.7 1 1 7.5 1 15.6 1 26.4 16 35 16 35s15-8.6 15-19.4C31 7.5 24.3 1 16 1z" fill="#fff"/></svg><img src="assets/aymen.jpg" alt="Aymen Jeddou" width="102" height="102"></div>
+        <article class="card" aria-label="Candidate card">
+          <div class="top-row">
+            <div><h3>PFE intern, data or AI</h3><div class="co">Aymen Jeddou · 2027</div></div>
+            <span class="pill soft"><span class="tick"><svg style="color:#fff"><use href="#tick"/></svg></span>Available</span>
+          </div>
+          <div class="tags"><span>Python</span><span>SQL</span><span>Data pipelines</span><span>RAG</span><span>Evaluation</span></div>
+          <blockquote>I built and run HiresHere: a daily pipeline over about 540 companies' job feeds, with an AI classifier and a verdict for 243 countries.<cite>hireshere.app, live since October 2026</cite></blockquote>
+        </article>
       </div>
     </div>
 
@@ -298,7 +297,7 @@ section { padding: 112px 0; }
         <div class="text">
           <h3>FSB Nexus</h3>
           <div class="meta"><span>Summer 2026 · IDEALAB</span></div>
-          <p>A multi-agent assistant for the Faculty of Sciences of Bizerte that answers from the faculty's own documents and shows its sources. Hybrid retrieval over pgvector and Postgres full-text, fused with reciprocal rank fusion.</p>
+          <p>A multi-agent assistant for my faculty (FSB) that answers from the faculty's own documents and shows its sources. Hybrid retrieval over pgvector and Postgres full-text, fused with reciprocal rank fusion.</p>
           <div class="links"><a href="https://github.com/AymenJeddou/digital_campus_platform">Code on GitHub <svg><use href="#out"/></svg></a></div>
           <div class="stack">FastAPI · pgvector · Mistral · Next.js · Alembic · CI</div>
         </div>
@@ -360,10 +359,10 @@ section { padding: 112px 0; }
   <div class="wrap">
     <h2>Where has he worked?</h2>
     <article class="job">
-      <div><div class="when">June to August 2026</div><div class="org">IDEALAB, Bizerte</div></div>
+      <div><div class="when">June to August 2026</div><div class="org">IDEALAB</div></div>
       <div>
         <h3>RAG Engineer &amp; Scrum Master, intern</h3>
-        <p class="ink-2" style="margin-top:8px">FSB Nexus, the academic assistant above, for the Faculty of Sciences of Bizerte.</p>
+        <p class="ink-2" style="margin-top:8px">FSB Nexus, the academic assistant above, built for my faculty.</p>
         <div class="scales">
           <div class="scale">
             <div class="row"><span>hit@5, retrieval</span><span>0.50 → <b>0.90</b></span></div>
@@ -432,7 +431,7 @@ section { padding: 112px 0; }
       <a class="btn btn-line" href="https://www.linkedin.com/in/aymen-jeddou-72891726a/">LinkedIn <svg><use href="#out"/></svg></a>
       <a class="btn btn-line" href="https://github.com/AymenJeddou">GitHub <svg><use href="#out"/></svg></a>
     </div>
-    <footer><span>© 2026 Aymen Jeddou · Bizerte, Tunisia</span><span>Pin mark from HiresHere · set in Bricolage Grotesque</span></footer>
+    <footer><span>© 2026 Aymen Jeddou</span><span>Pin mark from HiresHere · set in Bricolage Grotesque</span></footer>
   </div>
 </section>
 

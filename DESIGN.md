@@ -92,7 +92,7 @@ One face, Bricolage Grotesque, self-hosted from `assets/fonts/bricolage.woff2` (
 
 ## Layout
 
-Single page, 1180px wrap with 32px gutters (20px on phones). Hero is a two-column grid: name, role, verdict pill and actions on the left, the coast map with the pinned portrait on the right; the HiresHere screenshot rises out of the hero's bottom edge. Projects alternate text and image columns (5:7 then 7:5) and stack under 960px. Sections are 112px apart (80px on phones), more space above a heading than below.
+Single page, 1180px wrap with 32px gutters (20px on phones). Hero is a two-column grid: name, role, verdict pill and actions on the left, a candidate card on the right (HiresHere job-card style: the portrait in the pin overlapping its top edge, role, "Available" pill, skill tags, a quoted line with its source); no location or map; the HiresHere screenshot rises out of the hero's bottom edge. Projects alternate text and image columns (5:7 then 7:5) and stack under 960px. Sections are 112px apart (80px on phones), more space above a heading than below.
 
 ## Elevation & Depth
 
@@ -108,6 +108,7 @@ Pills (999px) for buttons, verdicts and statuses; 14px corners for screenshot fr
 - **Ruled scale**: before→after results on a 0 to 1 rule with ticks; open circle for before, green dot and green segment for the gain. Never a big-number tile.
 - **Frame**: real screenshots in a white frame; a top bar shows the live URL when the project is live.
 - **Status pills**: green "Live" for live sites, outlined "In progress", "Open PR", "Issue", "Discussion" for everything not finished. Statuses are honest.
+- **Candidate card**: the hero's job card about Aymen; the README header (`AymenJeddou/assets/header.png`, rendered from `.impeccable/banner.html`) repeats it.
 - **Pin drop**: the only entrance motion, once on load (0.9s, ease-out expo), disabled under reduced motion.
 
 ## Do's and Don'ts
